@@ -42,13 +42,14 @@ public class Menu extends javax.swing.JFrame {
         tabbedPanel = new javax.swing.JTabbedPane();
         welcomeTab = new javax.swing.JPanel();
         registerTab = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         deleteTab = new javax.swing.JPanel();
         modifyTab = new javax.swing.JPanel();
         searchTab = new javax.swing.JPanel();
         showTab = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1500, 900));
         setResizable(false);
 
         panelPrincipal.setBackground(new java.awt.Color(204, 204, 204));
@@ -221,17 +222,13 @@ public class Menu extends javax.swing.JFrame {
         tabbedPanel.addTab("WELCOME", welcomeTab);
 
         registerTab.setBackground(new java.awt.Color(204, 204, 204));
+        registerTab.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout registerTabLayout = new javax.swing.GroupLayout(registerTab);
-        registerTab.setLayout(registerTabLayout);
-        registerTabLayout.setHorizontalGroup(
-            registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1500, Short.MAX_VALUE)
-        );
-        registerTabLayout.setVerticalGroup(
-            registerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
+        jLabel1.setText("jLabel1");
+        registerTab.add(jLabel1, new java.awt.GridBagConstraints());
+
+        jTextField1.setText("jTextField1");
+        registerTab.add(jTextField1, new java.awt.GridBagConstraints());
 
         tabbedPanel.addTab("REGISTER", registerTab);
 
@@ -410,6 +407,8 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel deleteLabelMenuOpc;
     private javax.swing.JPanel deleteTab;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel menuOpc;
     private javax.swing.JLabel modifyLabelMenuOpc;
     private javax.swing.JPanel modifyTab;
