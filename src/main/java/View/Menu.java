@@ -300,11 +300,12 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         registerTab.add(genderLabel, gridBagConstraints);
 
-        genderValue.setBackground(new java.awt.Color(51, 51, 51));
+        genderValue.setBackground(new java.awt.Color(0, 0, 0));
         genderValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         genderValue.setForeground(new java.awt.Color(255, 255, 255));
-        genderValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOMBRE", "MUJER", "OTRO" }));
+        genderValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOMBRE", "MUJER" }));
         genderValue.setBorder(null);
+        genderValue.setOpaque(true);
         genderValue.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -367,7 +368,9 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         registerTab.add(vehicleLabel, gridBagConstraints);
 
+        vehicleButton.setBackground(new java.awt.Color(0, 0, 0));
         vehicleButton.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        vehicleButton.setForeground(new java.awt.Color(255, 255, 255));
         vehicleButton.setText("ADD VEHICLE");
         vehicleButton.setBorder(null);
         vehicleButton.setPreferredSize(new java.awt.Dimension(400, 50));
@@ -386,11 +389,12 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(60, 300, 10, 0);
         registerTab.add(typeLabel, gridBagConstraints);
 
-        typeValue.setBackground(new java.awt.Color(51, 51, 51));
+        typeValue.setBackground(new java.awt.Color(0, 0, 0));
         typeValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         typeValue.setForeground(new java.awt.Color(255, 255, 255));
         typeValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EMPLOYEE", "CUSTOMER" }));
         typeValue.setBorder(null);
+        typeValue.setOpaque(true);
         typeValue.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -493,7 +497,9 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 300, 5, 0);
         registerTab.add(vipLabel, gridBagConstraints);
 
+        vipValue.setBackground(new java.awt.Color(0, 0, 0));
         vipValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        vipValue.setForeground(new java.awt.Color(255, 255, 255));
         vipValue.setText("IS VIP?");
         vipValue.setBorder(null);
         vipValue.setPreferredSize(new java.awt.Dimension(400, 50));
