@@ -66,6 +66,7 @@ public class Menu extends javax.swing.JFrame {
         dateValue = new javax.swing.JTextField();
         vipLabel = new javax.swing.JLabel();
         vipValue = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
         deleteTab = new javax.swing.JPanel();
         modifyTab = new javax.swing.JPanel();
         searchTab = new javax.swing.JPanel();
@@ -386,7 +387,7 @@ public class Menu extends javax.swing.JFrame {
         typeLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         typeLabel.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(60, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(60, 200, 10, 0);
         registerTab.add(typeLabel, gridBagConstraints);
 
         typeValue.setBackground(new java.awt.Color(0, 0, 0));
@@ -399,7 +400,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(typeValue, gridBagConstraints);
 
         idEmployeeLabel.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -410,7 +411,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(10, 300, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(idEmployeeLabel, gridBagConstraints);
 
         idEmployeeValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -420,7 +421,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(idEmployeeValue, gridBagConstraints);
 
         salaryLabel.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -431,7 +432,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(10, 300, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(salaryLabel, gridBagConstraints);
 
         salaryValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -441,7 +442,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(salaryValue, gridBagConstraints);
 
         idCustomerLabel.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -452,7 +453,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.insets = new java.awt.Insets(10, 300, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(idCustomerLabel, gridBagConstraints);
 
         idCustomerValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -462,7 +463,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(idCustomerValue, gridBagConstraints);
 
         dateLabel.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -473,7 +474,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.insets = new java.awt.Insets(10, 300, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(dateLabel, gridBagConstraints);
 
         dateValue.setBackground(new java.awt.Color(204, 204, 204));
@@ -483,7 +484,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(dateValue, gridBagConstraints);
 
         vipLabel.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -494,7 +495,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.insets = new java.awt.Insets(10, 300, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(vipLabel, gridBagConstraints);
 
         vipValue.setBackground(new java.awt.Color(0, 0, 0));
@@ -506,8 +507,25 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(vipValue, gridBagConstraints);
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("REGISTER");
+        jButton1.setBorder(null);
+        jButton1.setPreferredSize(new java.awt.Dimension(200, 50));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
+        registerTab.add(jButton1, gridBagConstraints);
 
         tabbedPanel.addTab("REGISTER", registerTab);
 
@@ -648,6 +666,10 @@ public class Menu extends javax.swing.JFrame {
         showLabelMenuOpc.setBackground(new java.awt.Color(153, 153, 153));
     }//GEN-LAST:event_showLabelMenuOpcMouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -700,6 +722,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSpinner idEmployeeValue;
     private javax.swing.JLabel idLabel;
     private javax.swing.JSpinner idValue;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel menuOpc;
     private javax.swing.JLabel modifyLabelMenuOpc;
     private javax.swing.JPanel modifyTab;
