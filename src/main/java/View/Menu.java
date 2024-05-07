@@ -66,7 +66,7 @@ public class Menu extends javax.swing.JFrame {
         dateValue = new javax.swing.JTextField();
         vipLabel = new javax.swing.JLabel();
         vipValue = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         deleteTab = new javax.swing.JPanel();
         modifyTab = new javax.swing.JPanel();
         searchTab = new javax.swing.JPanel();
@@ -510,22 +510,22 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(vipValue, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGISTER");
-        jButton1.setBorder(null);
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 50));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        registerButton.setBackground(new java.awt.Color(0, 0, 0));
+        registerButton.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        registerButton.setForeground(new java.awt.Color(255, 255, 255));
+        registerButton.setText("REGISTER");
+        registerButton.setBorder(null);
+        registerButton.setPreferredSize(new java.awt.Dimension(200, 50));
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registerButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
-        registerTab.add(jButton1, gridBagConstraints);
+        registerTab.add(registerButton, gridBagConstraints);
 
         tabbedPanel.addTab("REGISTER", registerTab);
 
@@ -666,9 +666,9 @@ public class Menu extends javax.swing.JFrame {
         showLabelMenuOpc.setBackground(new java.awt.Color(153, 153, 153));
     }//GEN-LAST:event_showLabelMenuOpcMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -722,13 +722,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSpinner idEmployeeValue;
     private javax.swing.JLabel idLabel;
     private javax.swing.JSpinner idValue;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel menuOpc;
     private javax.swing.JLabel modifyLabelMenuOpc;
     private javax.swing.JPanel modifyTab;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameValue;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JButton registerButton;
     private javax.swing.JLabel registerLabelMenuOpc;
     private javax.swing.JPanel registerTab;
     private javax.swing.JLabel salaryLabel;
