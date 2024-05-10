@@ -4,6 +4,12 @@
  */
 package View;
 
+import static MyAPI.textManagement.isValidWithMinus;
+import java.awt.Color;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rambo
@@ -393,10 +399,15 @@ public class Menu extends javax.swing.JFrame {
         typeValue.setBackground(new java.awt.Color(0, 0, 0));
         typeValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         typeValue.setForeground(new java.awt.Color(255, 255, 255));
-        typeValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EMPLOYEE", "CUSTOMER" }));
+        typeValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "EMPLOYEE", "CUSTOMER" }));
         typeValue.setBorder(null);
         typeValue.setOpaque(true);
         typeValue.setPreferredSize(new java.awt.Dimension(400, 50));
+        typeValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeValueActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -452,7 +463,7 @@ public class Menu extends javax.swing.JFrame {
         idCustomerLabel.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(idCustomerLabel, gridBagConstraints);
 
@@ -462,7 +473,7 @@ public class Menu extends javax.swing.JFrame {
         idCustomerValue.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(idCustomerValue, gridBagConstraints);
 
@@ -473,7 +484,7 @@ public class Menu extends javax.swing.JFrame {
         dateLabel.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(dateLabel, gridBagConstraints);
 
@@ -483,7 +494,7 @@ public class Menu extends javax.swing.JFrame {
         dateValue.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(dateValue, gridBagConstraints);
 
@@ -494,19 +505,24 @@ public class Menu extends javax.swing.JFrame {
         vipLabel.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         registerTab.add(vipLabel, gridBagConstraints);
 
-        vipValue.setBackground(new java.awt.Color(0, 0, 0));
+        vipValue.setBackground(new java.awt.Color(255, 0, 0));
         vipValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         vipValue.setForeground(new java.awt.Color(255, 255, 255));
         vipValue.setText("IS VIP?");
         vipValue.setBorder(null);
         vipValue.setPreferredSize(new java.awt.Dimension(400, 50));
+        vipValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vipValueActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         registerTab.add(vipValue, gridBagConstraints);
 
@@ -522,7 +538,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
         registerTab.add(registerButton, gridBagConstraints);
@@ -607,6 +623,20 @@ public class Menu extends javax.swing.JFrame {
 
     private void registerLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(1);
+
+        // PARAMETROS EMPLEADOS Y CLIENTES
+        idEmployeeLabel.setVisible(false);
+        idEmployeeValue.setVisible(false);
+        salaryLabel.setVisible(false);
+        salaryValue.setVisible(false);
+        idCustomerLabel.setVisible(false);
+        idCustomerValue.setVisible(false);
+        dateLabel.setVisible(false);
+        dateValue.setVisible(false);
+        vipLabel.setVisible(false);
+        vipValue.setVisible(false);
+
+        registerButton.setVisible(false);
     }//GEN-LAST:event_registerLabelMenuOpcMouseClicked
 
     private void deleteLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMenuOpcMouseClicked
@@ -666,9 +696,216 @@ public class Menu extends javax.swing.JFrame {
         showLabelMenuOpc.setBackground(new java.awt.Color(153, 153, 153));
     }//GEN-LAST:event_showLabelMenuOpcMouseExited
 
+    private boolean validId(int id) {
+        return id < 0;
+    }
+
+    private boolean validName(String name) {
+        boolean valid = false;
+        if (name.isEmpty() || name.isBlank()) {
+            valid = true;
+        } else if (!isValidWithMinus(name)) {
+            valid = true;
+        }
+        return valid;
+    }
+
+    private boolean validGender(char gender) {
+        return switch (gender) {
+            case 'H', 'M', 'O' ->
+                false;
+            default ->
+                true;
+        };
+    }
+
+    private boolean validAge(int age) {
+        return age < 16;
+    }
+
+    private boolean validAddress(String address) {
+        boolean valid = false;
+        if (address.isEmpty() || address.isBlank()) {
+            valid = true;
+        } else if (!isValidWithMinus(address)) {
+            valid = true;
+        }
+        return valid;
+    }
+
+    private boolean allParametersPersonValids(int id, String name, char gender, int age, String address) {
+        boolean allValid = true;
+        if (validId(id)) {
+            JOptionPane.showMessageDialog(this, "WRONG ID PERSON", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validName(name)) {
+            JOptionPane.showMessageDialog(this, "WRONG NAME", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validGender(gender)) {
+            JOptionPane.showMessageDialog(this, "WRONG GENDER", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validAge(age)) {
+            JOptionPane.showMessageDialog(this, "WRONG AGE", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validAddress(address)) {
+            JOptionPane.showMessageDialog(this, "WRONG ADDRESS", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        return allValid;
+    }
+
+    private boolean validIdEmployee(int id) {
+        return id < 0;
+    }
+
+    private boolean validSalary(int salary) {
+        return salary < 0;
+    }
+
+    private boolean allParametersEmployeeValids(int idEmployee, int salary) {
+        boolean allValid = true;
+        if (validIdEmployee(idEmployee)) {
+            JOptionPane.showMessageDialog(this, "WRONG ID EMPLOYEE", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validSalary(salary)) {
+            JOptionPane.showMessageDialog(this, "WRONG SALARY", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        return allValid;
+    }
+
+    private boolean validIdCustomer(int id) {
+        return id < 0;
+    }
+
+    private boolean validDate(LocalDate date) {
+        return false;
+    }
+
+    private boolean validGender(boolean vip) {
+        return false;
+    }
+
+    private boolean allParametersCustomerValids(int idCustomer, LocalDate date, boolean vip) {
+        boolean allValid = true;
+        if (validIdCustomer(idCustomer)) {
+            JOptionPane.showMessageDialog(this, "WRONG ID CUSTOMER", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validDate(date)) {
+            JOptionPane.showMessageDialog(this, "WRONG DATE", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        if (validGender(vip)) {
+            JOptionPane.showMessageDialog(this, "WRONG GENDER", "WRONG", JOptionPane.ERROR_MESSAGE);
+            allValid = false;
+        }
+        return allValid;
+    }
+
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        
+        String typeResult = typeValue.getSelectedItem().toString();
+        if (typeResult.equals("-")) {
+            JOptionPane.showMessageDialog(this, "You have to select whether you are an employee or a customer", "WRONG", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int idResult = (int) idValue.getValue();
+            String nameResult = nameValue.getText();
+            String genderTaked = genderValue.getSelectedItem().toString();
+            char genderResult = genderTaked.charAt(0);
+            int ageResult = (int) ageValue.getValue();
+            String addressResult = addressValue.getText();
+
+            if (allParametersPersonValids(idResult, nameResult, genderResult, ageResult, addressResult)) {
+                switch (typeResult) {
+                    case "EMPLOYEE" -> {
+                        int idEmployeeResult = (int) idEmployeeValue.getValue();
+                        int salaryResult = (int) salaryValue.getValue();
+                        if (allParametersEmployeeValids(idEmployeeResult, salaryResult)) {
+
+                        }
+                    }
+                    case "CUSTOMER" -> {
+                        int idCustomerResult = (int) idCustomerValue.getValue();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        LocalDate dateResult = LocalDate.parse(dateValue.getText(), formatter);
+                        boolean vipResult = vipValue.isSelected();
+
+                        if (allParametersCustomerValids(idCustomerResult, dateResult, vipResult)) {
+
+                        }
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void typeValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeValueActionPerformed
+        switch (typeValue.getSelectedItem().toString()) {
+            case "-" -> {
+                idEmployeeLabel.setVisible(false);
+                idEmployeeValue.setVisible(false);
+                salaryLabel.setVisible(false);
+                salaryValue.setVisible(false);
+                idCustomerLabel.setVisible(false);
+                idCustomerValue.setVisible(false);
+                dateLabel.setVisible(false);
+                dateValue.setVisible(false);
+                vipLabel.setVisible(false);
+                vipValue.setVisible(false);
+                registerButton.setVisible(false);
+            }
+            case "EMPLOYEE" -> {
+                // Hacer visible los parametros de empleado
+                idEmployeeLabel.setVisible(true);
+                idEmployeeValue.setVisible(true);
+                salaryLabel.setVisible(true);
+                salaryValue.setVisible(true);
+
+                registerButton.setVisible(true);
+
+                // Ocultar la parte de cliente
+                idCustomerLabel.setVisible(false);
+                idCustomerValue.setVisible(false);
+                dateLabel.setVisible(false);
+                dateValue.setVisible(false);
+                vipLabel.setVisible(false);
+                vipValue.setVisible(false);
+            }
+            case "CUSTOMER" -> {
+                // Hacer visible los parametros de cliente
+                idCustomerLabel.setVisible(true);
+                idCustomerValue.setVisible(true);
+                dateLabel.setVisible(true);
+                dateValue.setVisible(true);
+                vipLabel.setVisible(true);
+                vipValue.setVisible(true);
+
+                // Ocultar la parte de empleado
+                idEmployeeLabel.setVisible(false);
+                idEmployeeValue.setVisible(false);
+                salaryLabel.setVisible(false);
+                salaryValue.setVisible(false);
+                
+                registerButton.setVisible(true);
+
+            }
+        }
+    }//GEN-LAST:event_typeValueActionPerformed
+
+    private void vipValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vipValueActionPerformed
+        Color green = new java.awt.Color(0, 255, 0);
+        Color red = new java.awt.Color(255, 0, 0);
+        if (vipValue.getBackground().equals(red)) {
+            vipValue.setBackground(green);
+        } else if (vipValue.getBackground().equals(green)) {
+            vipValue.setBackground(red);
+        }
+    }//GEN-LAST:event_vipValueActionPerformed
 
     /**
      * @param args the command line arguments
