@@ -74,9 +74,48 @@ public class Menu extends javax.swing.JFrame {
         vipValue = new javax.swing.JToggleButton();
         registerButton = new javax.swing.JButton();
         deleteTab = new javax.swing.JPanel();
+        selectPerson = new javax.swing.JComboBox<>();
+        labelPerson = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
+        scrollPanel = new javax.swing.JScrollPane();
+        personParameters = new javax.swing.JTextArea();
         modifyTab = new javax.swing.JPanel();
+        idLabel1 = new javax.swing.JLabel();
+        idValue1 = new javax.swing.JSpinner();
+        nameLabel1 = new javax.swing.JLabel();
+        nameValue1 = new javax.swing.JTextField();
+        genderLabel1 = new javax.swing.JLabel();
+        genderValue1 = new javax.swing.JComboBox<>();
+        ageLabel1 = new javax.swing.JLabel();
+        ageValue1 = new javax.swing.JSpinner();
+        addressLabel1 = new javax.swing.JLabel();
+        addressValue1 = new javax.swing.JTextField();
+        vehicleLabel1 = new javax.swing.JLabel();
+        vehicleButton1 = new javax.swing.JButton();
+        typeLabel1 = new javax.swing.JLabel();
+        typeValue1 = new javax.swing.JComboBox<>();
+        idEmployeeLabel1 = new javax.swing.JLabel();
+        idEmployeeValue1 = new javax.swing.JSpinner();
+        salaryLabel1 = new javax.swing.JLabel();
+        salaryValue1 = new javax.swing.JSpinner();
+        idCustomerLabel1 = new javax.swing.JLabel();
+        idCustomerValue1 = new javax.swing.JSpinner();
+        dateLabel1 = new javax.swing.JLabel();
+        dateValue1 = new javax.swing.JTextField();
+        vipLabel1 = new javax.swing.JLabel();
+        vipValue1 = new javax.swing.JToggleButton();
+        registerButton1 = new javax.swing.JButton();
         searchTab = new javax.swing.JPanel();
+        labelPerson1 = new javax.swing.JLabel();
+        scrollPanel1 = new javax.swing.JScrollPane();
+        personParameters1 = new javax.swing.JTextArea();
+        sendSearchButton = new javax.swing.JButton();
+        nameValue2 = new javax.swing.JTextField();
         showTab = new javax.swing.JPanel();
+        selectPerson2 = new javax.swing.JComboBox<>();
+        labelPerson2 = new javax.swing.JLabel();
+        scrollPanel2 = new javax.swing.JScrollPane();
+        personParameters2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -546,62 +585,448 @@ public class Menu extends javax.swing.JFrame {
         tabbedPanel.addTab("REGISTER", registerTab);
 
         deleteTab.setBackground(new java.awt.Color(204, 204, 204));
+        deleteTab.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout deleteTabLayout = new javax.swing.GroupLayout(deleteTab);
-        deleteTab.setLayout(deleteTabLayout);
-        deleteTabLayout.setHorizontalGroup(
-            deleteTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1500, Short.MAX_VALUE)
-        );
-        deleteTabLayout.setVerticalGroup(
-            deleteTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
+        selectPerson.setBackground(new java.awt.Color(0, 0, 0));
+        selectPerson.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        selectPerson.setForeground(new java.awt.Color(255, 255, 255));
+        selectPerson.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        deleteTab.add(selectPerson, gridBagConstraints);
+
+        labelPerson.setBackground(new java.awt.Color(255, 255, 255));
+        labelPerson.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        labelPerson.setForeground(new java.awt.Color(0, 0, 0));
+        labelPerson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPerson.setText("PERSON");
+        labelPerson.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelPerson.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        deleteTab.add(labelPerson, gridBagConstraints);
+
+        deleteButton.setBackground(new java.awt.Color(0, 0, 0));
+        deleteButton.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("DELETE");
+        deleteButton.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        deleteTab.add(deleteButton, gridBagConstraints);
+
+        scrollPanel.setPreferredSize(new java.awt.Dimension(700, 400));
+
+        personParameters.setBackground(new java.awt.Color(255, 255, 255));
+        personParameters.setColumns(20);
+        personParameters.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        personParameters.setRows(5);
+        scrollPanel.setViewportView(personParameters);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        deleteTab.add(scrollPanel, gridBagConstraints);
 
         tabbedPanel.addTab("DELETE", deleteTab);
 
         modifyTab.setBackground(new java.awt.Color(204, 204, 204));
+        modifyTab.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout modifyTabLayout = new javax.swing.GroupLayout(modifyTab);
-        modifyTab.setLayout(modifyTabLayout);
-        modifyTabLayout.setHorizontalGroup(
-            modifyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1500, Short.MAX_VALUE)
-        );
-        modifyTabLayout.setVerticalGroup(
-            modifyTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
+        idLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        idLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        idLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        idLabel1.setText("ID");
+        idLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        idLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
+        modifyTab.add(idLabel1, gridBagConstraints);
+
+        idValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        idValue1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        idValue1.setBorder(null);
+        idValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(idValue1, gridBagConstraints);
+
+        nameLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        nameLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        nameLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        nameLabel1.setText("NAME");
+        nameLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        nameLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
+        modifyTab.add(nameLabel1, gridBagConstraints);
+
+        nameValue1.setBackground(new java.awt.Color(204, 204, 204));
+        nameValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        nameValue1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 0)));
+        nameValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(nameValue1, gridBagConstraints);
+
+        genderLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        genderLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        genderLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        genderLabel1.setText("GENDER");
+        genderLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        genderLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
+        modifyTab.add(genderLabel1, gridBagConstraints);
+
+        genderValue1.setBackground(new java.awt.Color(0, 0, 0));
+        genderValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        genderValue1.setForeground(new java.awt.Color(255, 255, 255));
+        genderValue1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOMBRE", "MUJER" }));
+        genderValue1.setBorder(null);
+        genderValue1.setOpaque(true);
+        genderValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(genderValue1, gridBagConstraints);
+
+        ageLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        ageLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        ageLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        ageLabel1.setText("AGE");
+        ageLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        ageLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
+        modifyTab.add(ageLabel1, gridBagConstraints);
+
+        ageValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        ageValue1.setBorder(null);
+        ageValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(ageValue1, gridBagConstraints);
+
+        addressLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        addressLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        addressLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        addressLabel1.setText("ADDRESS");
+        addressLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        addressLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
+        modifyTab.add(addressLabel1, gridBagConstraints);
+
+        addressValue1.setBackground(new java.awt.Color(204, 204, 204));
+        addressValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        addressValue1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 0)));
+        addressValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(addressValue1, gridBagConstraints);
+
+        vehicleLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        vehicleLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        vehicleLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        vehicleLabel1.setText("VEHICLE");
+        vehicleLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        vehicleLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
+        modifyTab.add(vehicleLabel1, gridBagConstraints);
+
+        vehicleButton1.setBackground(new java.awt.Color(0, 0, 0));
+        vehicleButton1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        vehicleButton1.setForeground(new java.awt.Color(255, 255, 255));
+        vehicleButton1.setText("ADD VEHICLE");
+        vehicleButton1.setBorder(null);
+        vehicleButton1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(vehicleButton1, gridBagConstraints);
+
+        typeLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        typeLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        typeLabel1.setText("TYPE");
+        typeLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        typeLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(60, 200, 10, 0);
+        modifyTab.add(typeLabel1, gridBagConstraints);
+
+        typeValue1.setBackground(new java.awt.Color(0, 0, 0));
+        typeValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        typeValue1.setForeground(new java.awt.Color(255, 255, 255));
+        typeValue1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "EMPLOYEE", "CUSTOMER" }));
+        typeValue1.setBorder(null);
+        typeValue1.setOpaque(true);
+        typeValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        typeValue1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeValue1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
+        modifyTab.add(typeValue1, gridBagConstraints);
+
+        idEmployeeLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        idEmployeeLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        idEmployeeLabel1.setText("ID EMPLOYEE");
+        idEmployeeLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        idEmployeeLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
+        modifyTab.add(idEmployeeLabel1, gridBagConstraints);
+
+        idEmployeeValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        idEmployeeValue1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        idEmployeeValue1.setBorder(null);
+        idEmployeeValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
+        modifyTab.add(idEmployeeValue1, gridBagConstraints);
+
+        salaryLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        salaryLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        salaryLabel1.setText("SALARY");
+        salaryLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        salaryLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
+        modifyTab.add(salaryLabel1, gridBagConstraints);
+
+        salaryValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        salaryValue1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        salaryValue1.setBorder(null);
+        salaryValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
+        modifyTab.add(salaryValue1, gridBagConstraints);
+
+        idCustomerLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        idCustomerLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        idCustomerLabel1.setText("ID CUSTOMER");
+        idCustomerLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        idCustomerLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
+        modifyTab.add(idCustomerLabel1, gridBagConstraints);
+
+        idCustomerValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        idCustomerValue1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        idCustomerValue1.setBorder(null);
+        idCustomerValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
+        modifyTab.add(idCustomerValue1, gridBagConstraints);
+
+        dateLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        dateLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        dateLabel1.setText("DATE");
+        dateLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        dateLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
+        modifyTab.add(dateLabel1, gridBagConstraints);
+
+        dateValue1.setBackground(new java.awt.Color(204, 204, 204));
+        dateValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        dateValue1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 0)));
+        dateValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
+        modifyTab.add(dateValue1, gridBagConstraints);
+
+        vipLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        vipLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        vipLabel1.setText("VIP");
+        vipLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        vipLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
+        modifyTab.add(vipLabel1, gridBagConstraints);
+
+        vipValue1.setBackground(new java.awt.Color(255, 0, 0));
+        vipValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        vipValue1.setForeground(new java.awt.Color(255, 255, 255));
+        vipValue1.setText("IS VIP?");
+        vipValue1.setBorder(null);
+        vipValue1.setPreferredSize(new java.awt.Dimension(400, 50));
+        vipValue1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vipValue1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
+        modifyTab.add(vipValue1, gridBagConstraints);
+
+        registerButton1.setBackground(new java.awt.Color(0, 0, 0));
+        registerButton1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        registerButton1.setForeground(new java.awt.Color(255, 255, 255));
+        registerButton1.setText("REGISTER");
+        registerButton1.setBorder(null);
+        registerButton1.setPreferredSize(new java.awt.Dimension(200, 50));
+        registerButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
+        modifyTab.add(registerButton1, gridBagConstraints);
 
         tabbedPanel.addTab("MODIFY", modifyTab);
 
         searchTab.setBackground(new java.awt.Color(204, 204, 204));
+        searchTab.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout searchTabLayout = new javax.swing.GroupLayout(searchTab);
-        searchTab.setLayout(searchTabLayout);
-        searchTabLayout.setHorizontalGroup(
-            searchTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1500, Short.MAX_VALUE)
-        );
-        searchTabLayout.setVerticalGroup(
-            searchTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
+        labelPerson1.setBackground(new java.awt.Color(255, 255, 255));
+        labelPerson1.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        labelPerson1.setForeground(new java.awt.Color(0, 0, 0));
+        labelPerson1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPerson1.setText("PERSON");
+        labelPerson1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelPerson1.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        searchTab.add(labelPerson1, gridBagConstraints);
+
+        scrollPanel1.setPreferredSize(new java.awt.Dimension(700, 400));
+
+        personParameters1.setBackground(new java.awt.Color(255, 255, 255));
+        personParameters1.setColumns(20);
+        personParameters1.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        personParameters1.setRows(5);
+        scrollPanel1.setViewportView(personParameters1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        searchTab.add(scrollPanel1, gridBagConstraints);
+
+        sendSearchButton.setBackground(new java.awt.Color(0, 0, 0));
+        sendSearchButton.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        sendSearchButton.setForeground(new java.awt.Color(255, 255, 255));
+        sendSearchButton.setText("SEND");
+        sendSearchButton.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        searchTab.add(sendSearchButton, gridBagConstraints);
+
+        nameValue2.setBackground(new java.awt.Color(204, 204, 204));
+        nameValue2.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        nameValue2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 0)));
+        nameValue2.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 50);
+        searchTab.add(nameValue2, gridBagConstraints);
 
         tabbedPanel.addTab("SEARCH", searchTab);
 
         showTab.setBackground(new java.awt.Color(204, 204, 204));
+        showTab.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout showTabLayout = new javax.swing.GroupLayout(showTab);
-        showTab.setLayout(showTabLayout);
-        showTabLayout.setHorizontalGroup(
-            showTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1500, Short.MAX_VALUE)
-        );
-        showTabLayout.setVerticalGroup(
-            showTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
+        selectPerson2.setBackground(new java.awt.Color(0, 0, 0));
+        selectPerson2.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        selectPerson2.setForeground(new java.awt.Color(255, 255, 255));
+        selectPerson2.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        showTab.add(selectPerson2, gridBagConstraints);
+
+        labelPerson2.setBackground(new java.awt.Color(255, 255, 255));
+        labelPerson2.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        labelPerson2.setForeground(new java.awt.Color(0, 0, 0));
+        labelPerson2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPerson2.setText("PERSON");
+        labelPerson2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelPerson2.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        showTab.add(labelPerson2, gridBagConstraints);
+
+        scrollPanel2.setPreferredSize(new java.awt.Dimension(700, 400));
+
+        personParameters2.setBackground(new java.awt.Color(255, 255, 255));
+        personParameters2.setColumns(20);
+        personParameters2.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        personParameters2.setRows(5);
+        scrollPanel2.setViewportView(personParameters2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        showTab.add(scrollPanel2, gridBagConstraints);
 
         tabbedPanel.addTab("SHOW", showTab);
 
@@ -907,6 +1332,18 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_vipValueActionPerformed
 
+    private void typeValue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeValue1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeValue1ActionPerformed
+
+    private void vipValue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vipValue1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vipValue1ActionPerformed
+
+    private void registerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -944,34 +1381,67 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
     private javax.swing.JTextField addressValue;
+    private javax.swing.JTextField addressValue1;
     private javax.swing.JLabel ageLabel;
+    private javax.swing.JLabel ageLabel1;
     private javax.swing.JSpinner ageValue;
+    private javax.swing.JSpinner ageValue1;
     private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel dateLabel1;
     private javax.swing.JTextField dateValue;
+    private javax.swing.JTextField dateValue1;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel deleteLabelMenuOpc;
     private javax.swing.JPanel deleteTab;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JLabel genderLabel1;
     private javax.swing.JComboBox<String> genderValue;
+    private javax.swing.JComboBox<String> genderValue1;
     private javax.swing.JLabel idCustomerLabel;
+    private javax.swing.JLabel idCustomerLabel1;
     private javax.swing.JSpinner idCustomerValue;
+    private javax.swing.JSpinner idCustomerValue1;
     private javax.swing.JLabel idEmployeeLabel;
+    private javax.swing.JLabel idEmployeeLabel1;
     private javax.swing.JSpinner idEmployeeValue;
+    private javax.swing.JSpinner idEmployeeValue1;
     private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel idLabel1;
     private javax.swing.JSpinner idValue;
+    private javax.swing.JSpinner idValue1;
+    private javax.swing.JLabel labelPerson;
+    private javax.swing.JLabel labelPerson1;
+    private javax.swing.JLabel labelPerson2;
     private javax.swing.JPanel menuOpc;
     private javax.swing.JLabel modifyLabelMenuOpc;
     private javax.swing.JPanel modifyTab;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel nameLabel1;
     private javax.swing.JTextField nameValue;
+    private javax.swing.JTextField nameValue1;
+    private javax.swing.JTextField nameValue2;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JTextArea personParameters;
+    private javax.swing.JTextArea personParameters1;
+    private javax.swing.JTextArea personParameters2;
     private javax.swing.JButton registerButton;
+    private javax.swing.JButton registerButton1;
     private javax.swing.JLabel registerLabelMenuOpc;
     private javax.swing.JPanel registerTab;
     private javax.swing.JLabel salaryLabel;
+    private javax.swing.JLabel salaryLabel1;
     private javax.swing.JSpinner salaryValue;
+    private javax.swing.JSpinner salaryValue1;
+    private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JScrollPane scrollPanel1;
+    private javax.swing.JScrollPane scrollPanel2;
     private javax.swing.JLabel searchLabelMenuOpc;
     private javax.swing.JPanel searchTab;
+    private javax.swing.JComboBox<String> selectPerson;
+    private javax.swing.JComboBox<String> selectPerson2;
+    private javax.swing.JButton sendSearchButton;
     private javax.swing.JLabel showLabelMenuOpc;
     private javax.swing.JPanel showTab;
     private javax.swing.JLabel spliter1;
@@ -980,11 +1450,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel spliter4;
     private javax.swing.JTabbedPane tabbedPanel;
     private javax.swing.JLabel typeLabel;
+    private javax.swing.JLabel typeLabel1;
     private javax.swing.JComboBox<String> typeValue;
+    private javax.swing.JComboBox<String> typeValue1;
     private javax.swing.JButton vehicleButton;
+    private javax.swing.JButton vehicleButton1;
     private javax.swing.JLabel vehicleLabel;
+    private javax.swing.JLabel vehicleLabel1;
     private javax.swing.JLabel vipLabel;
+    private javax.swing.JLabel vipLabel1;
     private javax.swing.JToggleButton vipValue;
+    private javax.swing.JToggleButton vipValue1;
     private javax.swing.JPanel welcomeTab;
     // End of variables declaration//GEN-END:variables
 }
