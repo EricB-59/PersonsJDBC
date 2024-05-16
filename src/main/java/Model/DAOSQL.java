@@ -1,6 +1,12 @@
 package Model;
 
 //import Exceptions.DAO_Excep;
+import Controller.exceptions.PersonException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 //import Exceptions.Write_SQL_DAO_Excep;
 //import Exceptions.Read_SQL_DAO_Excep;
 //import Models.Student;
@@ -33,6 +39,7 @@ public class DAOSQL {
 
     //Variables para las consultas SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM " + JDBC_DDBB_TABLE + ";";
+    private final String SQL_SELECT_ALL_COUNT = "SELECT count(*) FROM " + JDBC_DDBB_TABLE + ";";
     private final String SQL_SELECT = "SELECT * FROM " + JDBC_DDBB_TABLE + " WHERE (name = ";
     private final String SQL_SELECT2 = "SELECT * FROM " + JDBC_DDBB_TABLE + " WHERE (age = ";
     private final String SQL_INSERT = "INSERT INTO " + JDBC_DDBB_TABLE + " (name, age) VALUES (?, ?);";
@@ -41,57 +48,75 @@ public class DAOSQL {
     private final String SQL_DELETE_ALL = "DELETE FROM " + JDBC_DDBB_TABLE + ";";
     private final String SQL_RESET_AGES = "UPDATE " + JDBC_DDBB_TABLE + " SET age = 0 WHERE (name = ?);";
 
-//    public Connection connect() throws DAO_Excep {
-//        Connection conn = null;
-//        try {
-//            //Esta línea no es necesaria, excepto en algunas aplicaciones WEB
-//            //En aplicaciones locales como esta no sería necesaria
-//            //Class.forName("com.mysql.cj.jdbc.Driver");
-//            //getConnection necesita la BBDD, el usuario y la contraseña
-//            conn = DriverManager.getConnection(JDBC_URL + JDBC_COMMU_OPT, JDBC_USER, JDBC_PASSWORD);
-//            createDB(conn);
-//            createTable(conn);
-////        } catch (ClassNotFoundException ex) {
-////           ex.printStackTrace(System.out);
-//        } catch (SQLException ex) {
-//            //ex.printStackTrace(System.out);
-//            throw new DAO_Excep("Can not connect or create database with tables: " + JDBC_DDBB);
-//        }
-//        return conn;
-//    }
+    public Connection connect() throws PersonException, SQLException {
+        Connection conn = null;
+        try {
+            //Esta línea no es necesaria, excepto en algunas aplicaciones WEB
+            //En aplicaciones locales como esta no sería necesaria
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            //getConnection necesita la BBDD, el usuario y la contraseña
+            conn = DriverManager.getConnection(JDBC_URL + JDBC_COMMU_OPT, JDBC_USER, JDBC_PASSWORD);
+            createDB(conn);
+            createTable(conn);
+//        } catch (ClassNotFoundException ex) {
+//           ex.printStackTrace(System.out);
+        } catch (SQLException ex) {
+            //ex.printStackTrace(System.out);
+            throw new PersonException("Can not connect or create database with tables: " + JDBC_DDBB);
+        }
+        return conn;
+    }
 //
-//    private void createDB(Connection conn) throws SQLException {
-//        //Sentencia SQL que crea la BBDD si no existe en el servidor
-//        String instruction = "create database if not exists " + JDBC_DDBB + ";";
-//        Statement stmt = null;
-//        stmt = conn.createStatement();
-//        //La clase Statemen nos permite ejecutar sentencias SQL
-//        stmt.executeUpdate(instruction);
-//        //Liberamos los recursos de la comunicación   
-//        stmt.close();
-//    }
+
+    private void createDB(Connection conn) throws SQLException {
+        //Sentencia SQL que crea la BBDD si no existe en el servidor
+        String instruction = "create database if not exists " + JDBC_DDBB + ";";
+        Statement stmt = null;
+        stmt = conn.createStatement();
+        //La clase Statemen nos permite ejecutar sentencias SQL
+        stmt.executeUpdate(instruction);
+        //Liberamos los recursos de la comunicación   
+        stmt.close();
+    }
 //
-//    private void createTable(Connection conn) throws SQLException {
-//        String query = "create table if not exists " + JDBC_DDBB + "." + JDBC_TABLE + "("
-//                + "id Bigint primary key auto_increment, "
-//                + "name varchar(50), "
-//                + "age int);";
-//        Statement stmt = null;
-//        stmt = conn.createStatement();
-//        stmt.executeUpdate(query);
-//        //Liberamos los recursos de la comunicación   
-//        stmt.close();
-//    }
+
+    private void createTable(Connection conn) throws SQLException {
+        String query = "create table if not exists " + JDBC_DDBB + "." + JDBC_TABLE + "("
+                + "id Bigint primary key auto_increment, "
+                + "idPerson int,"
+                + "name varchar(50),"
+                + "gender char,"
+                + "age int,"
+                + "address varchar(50),"
+                + "vehicle varchar(7),"
+                + "idemployee int,"
+                + "salary int,"
+                + "idcustomer int,"
+                + "date varchar(20),"
+                + "vip boolean"
+                + ");";
+        String query2 = "create table if not exists " + JDBC_DDBB + "." + JDBC_TABLE2 + "("
+                + "id Bigint primary key auto_increment,"
+                + "licensePlate varchar(7), "
+                + "color varchar(20));";
+        Statement stmt = null;
+        stmt = conn.createStatement();
+        stmt.executeUpdate(query);
+        stmt.executeUpdate(query);
+        //Liberamos los recursos de la comunicación   
+        stmt.close();
+    }
 //
-//    public void disconnect(Connection conn) throws DAO_Excep {
-//        if (conn != null) {
-//            try {
-//                conn.close();
-//            } catch (SQLException ex) {
-//                throw new DAO_Excep("Can not disconnect from database " + JDBC_DDBB);
-//            }
-//        }
-//    }
+
+    public void disconnect(Connection conn) throws PersonException {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                throw new PersonException("Can not disconnect from database " + JDBC_DDBB);
+            }
+        }
+    }
 //
 //    @Override
 //    public List<Student> readALL() throws DAO_Excep {
