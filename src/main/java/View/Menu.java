@@ -4,10 +4,16 @@
  */
 package View;
 
+import static Controller.controllerPersons.numberOfPersons;
+import static Controller.controllerPersons.startDB;
+import Controller.exceptions.PersonException;
 import static MyAPI.textManagement.isValidWithMinus;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +28,17 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
+        try {
+            startDB();
+        } catch (PersonException | SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            System.out.println(numberOfPersons());
+            labelNumberOfPersons.setText(numberOfPersons());
+        } catch (PersonException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -47,6 +64,9 @@ public class Menu extends javax.swing.JFrame {
         spliter4 = new javax.swing.JLabel();
         tabbedPanel = new javax.swing.JTabbedPane();
         welcomeTab = new javax.swing.JPanel();
+        welcomeText = new javax.swing.JLabel();
+        labelNumberOfPersons = new javax.swing.JLabel();
+        welcomeText1 = new javax.swing.JLabel();
         registerTab = new javax.swing.JPanel();
         idLabel = new javax.swing.JLabel();
         idValue = new javax.swing.JSpinner();
@@ -275,17 +295,31 @@ public class Menu extends javax.swing.JFrame {
         panelPrincipal.add(menuOpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 80));
 
         welcomeTab.setBackground(new java.awt.Color(204, 204, 204));
+        welcomeTab.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout welcomeTabLayout = new javax.swing.GroupLayout(welcomeTab);
-        welcomeTab.setLayout(welcomeTabLayout);
-        welcomeTabLayout.setHorizontalGroup(
-            welcomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1500, Short.MAX_VALUE)
-        );
-        welcomeTabLayout.setVerticalGroup(
-            welcomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
+        welcomeText.setFont(new java.awt.Font("Anta", 0, 48)); // NOI18N
+        welcomeText.setForeground(new java.awt.Color(0, 0, 0));
+        welcomeText.setText("NUMBER OF PERSONS: ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        welcomeTab.add(welcomeText, gridBagConstraints);
+
+        labelNumberOfPersons.setFont(new java.awt.Font("Anta", 0, 48)); // NOI18N
+        labelNumberOfPersons.setForeground(new java.awt.Color(0, 0, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        welcomeTab.add(labelNumberOfPersons, gridBagConstraints);
+
+        welcomeText1.setFont(new java.awt.Font("Anta", 0, 48)); // NOI18N
+        welcomeText1.setForeground(new java.awt.Color(0, 0, 0));
+        welcomeText1.setText("WELCOME");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        welcomeTab.add(welcomeText1, gridBagConstraints);
 
         tabbedPanel.addTab("WELCOME", welcomeTab);
 
@@ -420,6 +454,11 @@ public class Menu extends javax.swing.JFrame {
         vehicleButton.setText("ADD VEHICLE");
         vehicleButton.setBorder(null);
         vehicleButton.setPreferredSize(new java.awt.Dimension(400, 50));
+        vehicleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
@@ -1315,7 +1354,7 @@ public class Menu extends javax.swing.JFrame {
                 idEmployeeValue.setVisible(false);
                 salaryLabel.setVisible(false);
                 salaryValue.setVisible(false);
-                
+
                 registerButton.setVisible(true);
 
             }
@@ -1343,6 +1382,12 @@ public class Menu extends javax.swing.JFrame {
     private void registerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerButton1ActionPerformed
+
+    private void vehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleButtonActionPerformed
+        createVehicle cv = new createVehicle(this, true);
+        cv.setLocationRelativeTo(null);
+        cv.setVisible(true);
+    }//GEN-LAST:event_vehicleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1411,6 +1456,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel idLabel1;
     private javax.swing.JSpinner idValue;
     private javax.swing.JSpinner idValue1;
+    private javax.swing.JLabel labelNumberOfPersons;
     private javax.swing.JLabel labelPerson;
     private javax.swing.JLabel labelPerson1;
     private javax.swing.JLabel labelPerson2;
@@ -1462,5 +1508,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JToggleButton vipValue;
     private javax.swing.JToggleButton vipValue1;
     private javax.swing.JPanel welcomeTab;
+    private javax.swing.JLabel welcomeText;
+    private javax.swing.JLabel welcomeText1;
     // End of variables declaration//GEN-END:variables
 }

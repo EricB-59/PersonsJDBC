@@ -4,6 +4,7 @@ package Model;
 import Controller.exceptions.PersonException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -51,17 +52,11 @@ public class DAOSQL {
     public Connection connect() throws PersonException, SQLException {
         Connection conn = null;
         try {
-            //Esta línea no es necesaria, excepto en algunas aplicaciones WEB
-            //En aplicaciones locales como esta no sería necesaria
-            //Class.forName("com.mysql.cj.jdbc.Driver");
             //getConnection necesita la BBDD, el usuario y la contraseña
             conn = DriverManager.getConnection(JDBC_URL + JDBC_COMMU_OPT, JDBC_USER, JDBC_PASSWORD);
             createDB(conn);
             createTable(conn);
-//        } catch (ClassNotFoundException ex) {
-//           ex.printStackTrace(System.out);
         } catch (SQLException ex) {
-            //ex.printStackTrace(System.out);
             throw new PersonException("Can not connect or create database with tables: " + JDBC_DDBB);
         }
         return conn;
@@ -88,26 +83,28 @@ public class DAOSQL {
                 + "gender char,"
                 + "age int,"
                 + "address varchar(50),"
-                + "vehicle varchar(7),"
+                + "vehicleId Bigint,"
                 + "idemployee int,"
                 + "salary int,"
                 + "idcustomer int,"
                 + "date varchar(20),"
-                + "vip boolean"
+                + "vip boolean,"
+                + "FOREIGN KEY (vehicleId) REFERENCES " + JDBC_DDBB + "." + JDBC_TABLE2 + "(id)"
                 + ");";
+
         String query2 = "create table if not exists " + JDBC_DDBB + "." + JDBC_TABLE2 + "("
                 + "id Bigint primary key auto_increment,"
                 + "licensePlate varchar(7), "
                 + "color varchar(20));";
+
         Statement stmt = null;
         stmt = conn.createStatement();
+        stmt.executeUpdate(query2);
         stmt.executeUpdate(query);
-        stmt.executeUpdate(query);
-        //Liberamos los recursos de la comunicación   
         stmt.close();
     }
-//
 
+//
     public void disconnect(Connection conn) throws PersonException {
         if (conn != null) {
             try {
@@ -118,6 +115,32 @@ public class DAOSQL {
         }
     }
 //
+
+    public int countALL() throws PersonException {
+        Connection conn = null;
+        Statement instruction = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            conn = connect();
+            instruction = conn.createStatement();
+            rs = instruction.executeQuery(SQL_SELECT_ALL_COUNT);
+            while (rs.next()) {
+                count = rs.getInt("count(*)");
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - readAll");
+        } finally {
+            try {
+                rs.close();
+                instruction.close();
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - readAll");
+            }
+        }
+        return count;
+    }
 //    @Override
 //    public List<Student> readALL() throws DAO_Excep {
 //        List<Student> students = new ArrayList<>();
