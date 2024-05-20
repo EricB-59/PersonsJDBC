@@ -4,10 +4,15 @@
  */
 package View;
 
+import static Controller.controllerPersons.addPerson;
 import static Controller.controllerPersons.numberOfPersons;
 import static Controller.controllerPersons.startDB;
 import Controller.exceptions.PersonException;
+import Model.Customer;
+import Model.Employee;
+import Model.Person;
 import static MyAPI.textManagement.isValidWithMinus;
+import static View.createVehicle.getVehicle;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -1290,17 +1295,32 @@ public class Menu extends javax.swing.JFrame {
                         int idEmployeeResult = (int) idEmployeeValue.getValue();
                         int salaryResult = (int) salaryValue.getValue();
                         if (allParametersEmployeeValids(idEmployeeResult, salaryResult)) {
-
+                            Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
+                            try {
+                                addPerson(e);
+                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                tabbedPanel.setSelectedIndex(0);
+                            } catch (PersonException ex) {
+                                JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
+                                
+                            }
                         }
                     }
                     case "CUSTOMER" -> {
                         int idCustomerResult = (int) idCustomerValue.getValue();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                         LocalDate dateResult = LocalDate.parse(dateValue.getText(), formatter);
                         boolean vipResult = vipValue.isSelected();
 
                         if (allParametersCustomerValids(idCustomerResult, dateResult, vipResult)) {
-
+                            Customer c = new Customer(idCustomerResult, dateResult, vipResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
+                            try {
+                                addPerson(c);
+                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                tabbedPanel.setSelectedIndex(0);
+                            } catch (PersonException cx) {
+                                JOptionPane.showMessageDialog(this, cx.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                     }
                 }

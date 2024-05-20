@@ -4,9 +4,11 @@ package Model;
 import Controller.exceptions.PersonException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 
 //import Exceptions.Write_SQL_DAO_Excep;
 //import Exceptions.Read_SQL_DAO_Excep;
@@ -44,6 +46,7 @@ public class DAOSQL {
     private final String SQL_SELECT = "SELECT * FROM " + JDBC_DDBB_TABLE + " WHERE (name = ";
     private final String SQL_SELECT2 = "SELECT * FROM " + JDBC_DDBB_TABLE + " WHERE (age = ";
     private final String SQL_INSERT = "INSERT INTO " + JDBC_DDBB_TABLE + " (name, age) VALUES (?, ?);";
+    private final String SQL_INSERT2 = "INSERT INTO " + JDBC_DDBB_TABLE2 + " (id, licensePlate, color) VALUES (?, ?, ?);";
     private final String SQL_UPDATE = "UPDATE " + JDBC_DDBB_TABLE + " SET age = ? WHERE (name = ?);";
     private final String SQL_DELETE = "DELETE FROM " + JDBC_DDBB_TABLE + " WHERE (name = ";
     private final String SQL_DELETE_ALL = "DELETE FROM " + JDBC_DDBB_TABLE + ";";
@@ -141,6 +144,171 @@ public class DAOSQL {
         }
         return count;
     }
+
+    public int searchId(int idToCheck) throws PersonException {
+        Connection conn = null;
+        Statement instruction = null;
+        ResultSet rs = null;
+        int id = 0;
+        try {
+            conn = connect();
+            instruction = conn.createStatement();
+            rs = instruction.executeQuery("SELECT count(idPerson) FROM " + JDBC_DDBB_TABLE + " WHERE idPerson = " + idToCheck + ";");
+            while (rs.next()) {
+                id = rs.getInt("count(idPerson)");
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - readAll");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instruction != null) {
+                    instruction.close();
+                }
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - readAll");
+            }
+        }
+        return id;
+    }
+
+    public int searchIdEmployee(int idToCheck) throws PersonException {
+        Connection conn = null;
+        Statement instruction = null;
+        ResultSet rs = null;
+        int id = 0;
+        try {
+            conn = connect();
+            instruction = conn.createStatement();
+            rs = instruction.executeQuery("SELECT count(idemployee) FROM " + JDBC_DDBB_TABLE + " WHERE idemployee = " + idToCheck + ";");
+            while (rs.next()) {
+                id = rs.getInt("count(idemployee)");
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - readAll");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instruction != null) {
+                    instruction.close();
+                }
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - readAll");
+            }
+        }
+        return id;
+    }
+
+    public int searchIdCustomer(int idToCheck) throws PersonException {
+        Connection conn = null;
+        Statement instruction = null;
+        ResultSet rs = null;
+        int id = 0;
+        try {
+            conn = connect();
+            instruction = conn.createStatement();
+            rs = instruction.executeQuery("SELECT count(idcustomer) FROM " + JDBC_DDBB_TABLE + " WHERE idcustomer = " + idToCheck + ";");
+            while (rs.next()) {
+                id = rs.getInt("count(idcustomer)");
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - readAll");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instruction != null) {
+                    instruction.close();
+                }
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - readAll");
+            }
+        }
+        return id;
+    }
+
+    public int searchIdByLicensePlate(String licensePlate) throws PersonException {
+        Connection conn = null;
+        Statement instruction = null;
+        ResultSet rs = null;
+        int id = 0;
+        try {
+            conn = connect();
+            instruction = conn.createStatement();
+            rs = instruction.executeQuery("SELECT id FROM " + JDBC_DDBB_TABLE2 + " WHERE licensePlate LIKE '" + licensePlate + "'");
+            while (rs.next()) {
+                id = rs.getInt("id");
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - readAll");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instruction != null) {
+                    instruction.close();
+                }
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - readAll");
+            }
+        }
+        return id;
+    }
+
+    public int insert(Person p) throws PersonException {
+        String SQL_INSERT_EMPLOYEE = "INSERT INTO " + JDBC_DDBB_TABLE + " (idPerson, name, gender, age, address, vehicleId, idemployee, salary) VALUES ";
+        String SQL_INSERT_CUSTOMER = "INSERT INTO " + JDBC_DDBB_TABLE + " (idPerson, name, gender, age, address, vehicleId, idcustomer, date, vip) VALUES ";
+        String SQL_INSERT_VEHICLE = "INSERT INTO " + JDBC_DDBB_TABLE2 + " (licensePlate, color) VALUES ";
+
+        int registers = 0;
+
+        try (Connection conn = connect()) {
+            if (p.getV() != null) {
+                try (PreparedStatement instruction = conn.prepareStatement(SQL_INSERT_VEHICLE + "('" + p.getV().getLicensePlate() + "','" + p.getV().getColor() + "');")) {
+                    registers += instruction.executeUpdate();
+                    instruction.close();
+                    disconnect(conn);
+                }
+                if (p instanceof Employee) {
+                    try (Connection conn2 = connect()) {
+                        Employee e = (Employee) p;
+                        try (PreparedStatement instruction = conn2.prepareStatement(SQL_INSERT_EMPLOYEE + "(" + p.getID() + ",'" + p.getName() + "','" + p.getGender() + "'," + p.getAge() + ",'" + p.getAddress() + "'," + searchIdByLicensePlate(p.getV().getLicensePlate()) + "," + e.getIDEMPLOYEE() + "," + ((int) e.getSalary()) + ");")) {
+                            registers += instruction.executeUpdate();
+                        }
+                    } catch (SQLException ex) {
+                        throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+
+                }
+                if (p instanceof Customer) {
+                    try (Connection conn2 = connect()) {
+                        Customer c = (Customer) p;
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        try (PreparedStatement instruction = conn2.prepareStatement(SQL_INSERT_CUSTOMER + "(" + p.getID() + ",'" + p.getName() + "','" + p.getGender() + "'," + p.getAge() + ",'" + p.getAddress() + "'," + searchIdByLicensePlate(p.getV().getLicensePlate()) + "," + c.getIDCUSTOMER() + ",'" + c.getDateRegister().format(formatter) + "'," + (c.isVip() ? 1 : 0) + ");")) {
+                            registers += instruction.executeUpdate();
+                        }
+                    } catch (SQLException ex) {
+                        throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+        }
+        // Devolvemos la cantidad de registros afectados, en nuestro caso siempre uno
+        return registers;
+    }
+
 //    @Override
 //    public List<Student> readALL() throws DAO_Excep {
 //        List<Student> students = new ArrayList<>();

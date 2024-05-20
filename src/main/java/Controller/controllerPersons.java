@@ -10,27 +10,36 @@ import java.sql.SQLException;
 public class controllerPersons {
 
     public static void startDB() throws PersonException, SQLException {
-        (new DAOSQL()).connect();
+        new DAOSQL().connect();
     }
 
     public static String numberOfPersons() throws PersonException {
-        return String.valueOf((new DAOSQL()).countALL());
+        return String.valueOf(new DAOSQL().countALL());
     }
-    
-    
 
-    public static void addPersonToArray(Person p) throws PersonException {
-        switch (p.getClass().getSimpleName()) {
-            case "Employee" -> {
+    public static void addPerson(Person p) throws PersonException {
+        DAOSQL dao;
+        dao = new DAOSQL();
+        if (dao.searchId(p.getID()) == 1) {
+            throw new PersonException("ID REPEATED PERSON");
+        } else {
+            if (p instanceof Employee) {
                 Employee e = (Employee) p;
-
+                if (dao.searchIdEmployee(e.getIDEMPLOYEE()) == 1) {
+                    throw new PersonException("ID REPEATED EMPLOYEE");
+                } else {
+                    dao.insert(p);
+                }
             }
-            case "Customer" -> {
+            if (p instanceof Customer) {
                 Customer c = (Customer) p;
-
+                if (dao.searchIdCustomer(c.getIDCUSTOMER()) == 1) {
+                    throw new PersonException("ID REPEATED CUSTOMER");
+                } else {
+                    dao.insert(p);
+                }
             }
         }
-
     }
 
     public static void deletePerson(Person p) throws PersonException {
