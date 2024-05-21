@@ -41,6 +41,10 @@ public class controllerPersons {
             }
         }
     }
+    
+    public static String[][] moveIdAndNameToView () throws PersonException {
+        return new DAOSQL().readPersonsIdAndName();
+    }
 
     public static void deletePerson(Person p) throws PersonException {
 //        System.out.println(p);

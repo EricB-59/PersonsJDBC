@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 //import Exceptions.Write_SQL_DAO_Excep;
 //import Exceptions.Read_SQL_DAO_Excep;
@@ -305,6 +306,51 @@ public class DAOSQL {
             throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
         }
         return registers;
+    }
+
+    public String[][] readPersonsIdAndName() throws PersonException {
+        Connection conn = null;
+        Statement instruction = null;
+        ResultSet rs = null;
+        String[][] idAndName = null;
+
+        try {
+            conn = connect();
+            instruction = conn.createStatement();
+            rs = instruction.executeQuery("SELECT idPerson, name FROM " + JDBC_DDBB_TABLE + ";");
+
+            // Use ArrayList to temporarily store the data
+            ArrayList<String[]> tempList = new ArrayList<>();
+
+            while (rs.next()) {
+                int id = rs.getInt("idPerson");
+                String name = rs.getString("name");
+                tempList.add(new String[]{String.valueOf(id), name});
+            }
+
+            // Convert the ArrayList to a 2D array
+            idAndName = new String[tempList.size()][2];
+            for (int i = 0; i < tempList.size(); i++) {
+                idAndName[i] = tempList.get(i);
+            }
+
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - readAll");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instruction != null) {
+                    instruction.close();
+                }
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - readAll");
+            }
+        }
+
+        return idAndName;
     }
 
 //    @Override

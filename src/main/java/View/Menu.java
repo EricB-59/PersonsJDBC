@@ -5,6 +5,7 @@
 package View;
 
 import static Controller.controllerPersons.addPerson;
+import static Controller.controllerPersons.moveIdAndNameToView;
 import static Controller.controllerPersons.numberOfPersons;
 import static Controller.controllerPersons.startDB;
 import Controller.exceptions.PersonException;
@@ -1110,6 +1111,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void deleteLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(2);
+        selectPerson.removeAllItems();
+        try {
+            String[][] idAndName = moveIdAndNameToView();
+            for (int i = 0; i < idAndName.length; i++) {
+                // Asumimos que deseas mostrar los datos como "id - name"
+                String item = idAndName[i][0] + " - " + idAndName[i][1];
+                selectPerson.addItem(item);
+            }
+        } catch (PersonException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_deleteLabelMenuOpcMouseClicked
 
     private void modifyLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifyLabelMenuOpcMouseClicked
@@ -1302,7 +1314,7 @@ public class Menu extends javax.swing.JFrame {
                                 tabbedPanel.setSelectedIndex(0);
                             } catch (PersonException ex) {
                                 JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
-                                
+
                             }
                         }
                     }
