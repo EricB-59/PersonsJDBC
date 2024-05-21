@@ -45,16 +45,12 @@ public class controllerPersons {
     public static String[][] moveIdAndNameToView () throws PersonException {
         return new DAOSQL().readPersonsIdAndName();
     }
+    
+    public static Person getPersonById (int idToSearch) throws PersonException {
+        return new DAOSQL().searchPersonById(idToSearch);
+    }
 
-    public static void deletePerson(Person p) throws PersonException {
-//        System.out.println(p);
-//        if (!arrayListPersons.contains(p)) {
-//            throw new PersonException(p.getName() + " no existe");
-//        } else {
-//            System.out.println("DELETE");
-//            System.out.println(p);
-//            arrayListPersons.remove(p);
-//            escrituraFichero();
-//        }
+    public static void deletePerson(int idToDelete) throws PersonException {
+        new DAOSQL().delete(new DAOSQL().searchPersonById(idToDelete));
     }
 }

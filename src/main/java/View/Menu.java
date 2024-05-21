@@ -5,6 +5,8 @@
 package View;
 
 import static Controller.controllerPersons.addPerson;
+import static Controller.controllerPersons.deletePerson;
+import static Controller.controllerPersons.getPersonById;
 import static Controller.controllerPersons.moveIdAndNameToView;
 import static Controller.controllerPersons.numberOfPersons;
 import static Controller.controllerPersons.startDB;
@@ -636,6 +638,11 @@ public class Menu extends javax.swing.JFrame {
         selectPerson.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
         selectPerson.setForeground(new java.awt.Color(255, 255, 255));
         selectPerson.setPreferredSize(new java.awt.Dimension(300, 60));
+        selectPerson.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectPersonItemStateChanged(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -660,6 +667,11 @@ public class Menu extends javax.swing.JFrame {
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("DELETE");
         deleteButton.setPreferredSize(new java.awt.Dimension(300, 60));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -1112,12 +1124,11 @@ public class Menu extends javax.swing.JFrame {
     private void deleteLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(2);
         selectPerson.removeAllItems();
+        selectPerson.addItem("-");
         try {
             String[][] idAndName = moveIdAndNameToView();
             for (int i = 0; i < idAndName.length; i++) {
-                // Asumimos que deseas mostrar los datos como "id - name"
-                String item = idAndName[i][0] + " - " + idAndName[i][1];
-                selectPerson.addItem(item);
+                selectPerson.addItem(idAndName[i][0] + " - " + idAndName[i][1]);
             }
         } catch (PersonException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
@@ -1420,6 +1431,28 @@ public class Menu extends javax.swing.JFrame {
         cv.setLocationRelativeTo(null);
         cv.setVisible(true);
     }//GEN-LAST:event_vehicleButtonActionPerformed
+
+    public static int idToDelete;
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        confirmDelete cd = new confirmDelete(this, true);
+        cd.setLocationRelativeTo(null);
+        cd.setVisible(true);
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void selectPersonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectPersonItemStateChanged
+        personParameters.setVisible(true);
+        if (!selectPerson.getSelectedItem().toString().equals("-")) {
+            String selectedItem = selectPerson.getSelectedItem().toString();
+            int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+            idToDelete = selectedId;
+            try {
+                personParameters.setText(getPersonById(selectedId).toString());
+            } catch (PersonException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_selectPersonItemStateChanged
 
     /**
      * @param args the command line arguments
