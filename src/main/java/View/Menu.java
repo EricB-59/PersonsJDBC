@@ -120,8 +120,6 @@ public class Menu extends javax.swing.JFrame {
         addressValue1 = new javax.swing.JTextField();
         vehicleLabel1 = new javax.swing.JLabel();
         vehicleButton1 = new javax.swing.JButton();
-        typeLabel1 = new javax.swing.JLabel();
-        typeValue1 = new javax.swing.JComboBox<>();
         idEmployeeLabel1 = new javax.swing.JLabel();
         idEmployeeValue1 = new javax.swing.JSpinner();
         salaryLabel1 = new javax.swing.JLabel();
@@ -132,7 +130,9 @@ public class Menu extends javax.swing.JFrame {
         dateValue1 = new javax.swing.JTextField();
         vipLabel1 = new javax.swing.JLabel();
         vipValue1 = new javax.swing.JToggleButton();
-        registerButton1 = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        checkValue = new javax.swing.JComboBox<>();
+        checkButton = new javax.swing.JButton();
         searchTab = new javax.swing.JPanel();
         labelPerson1 = new javax.swing.JLabel();
         scrollPanel1 = new javax.swing.JScrollPane();
@@ -705,7 +705,9 @@ public class Menu extends javax.swing.JFrame {
         idLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         idLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 10, 0);
         modifyTab.add(idLabel1, gridBagConstraints);
 
         idValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
@@ -714,7 +716,7 @@ public class Menu extends javax.swing.JFrame {
         idValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         modifyTab.add(idValue1, gridBagConstraints);
 
@@ -726,7 +728,7 @@ public class Menu extends javax.swing.JFrame {
         nameLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         modifyTab.add(nameLabel1, gridBagConstraints);
 
@@ -736,7 +738,7 @@ public class Menu extends javax.swing.JFrame {
         nameValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         modifyTab.add(nameValue1, gridBagConstraints);
 
@@ -748,7 +750,7 @@ public class Menu extends javax.swing.JFrame {
         genderLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         modifyTab.add(genderLabel1, gridBagConstraints);
 
@@ -761,7 +763,7 @@ public class Menu extends javax.swing.JFrame {
         genderValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         modifyTab.add(genderValue1, gridBagConstraints);
 
@@ -773,7 +775,7 @@ public class Menu extends javax.swing.JFrame {
         ageLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         modifyTab.add(ageLabel1, gridBagConstraints);
 
@@ -782,7 +784,7 @@ public class Menu extends javax.swing.JFrame {
         ageValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         modifyTab.add(ageValue1, gridBagConstraints);
 
@@ -794,7 +796,7 @@ public class Menu extends javax.swing.JFrame {
         addressLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         modifyTab.add(addressLabel1, gridBagConstraints);
 
@@ -804,7 +806,7 @@ public class Menu extends javax.swing.JFrame {
         addressValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         modifyTab.add(addressValue1, gridBagConstraints);
 
@@ -816,7 +818,7 @@ public class Menu extends javax.swing.JFrame {
         vehicleLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         modifyTab.add(vehicleLabel1, gridBagConstraints);
 
@@ -826,38 +828,16 @@ public class Menu extends javax.swing.JFrame {
         vehicleButton1.setText("ADD VEHICLE");
         vehicleButton1.setBorder(null);
         vehicleButton1.setPreferredSize(new java.awt.Dimension(400, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        modifyTab.add(vehicleButton1, gridBagConstraints);
-
-        typeLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
-        typeLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        typeLabel1.setText("TYPE");
-        typeLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        typeLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(60, 200, 10, 0);
-        modifyTab.add(typeLabel1, gridBagConstraints);
-
-        typeValue1.setBackground(new java.awt.Color(0, 0, 0));
-        typeValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
-        typeValue1.setForeground(new java.awt.Color(255, 255, 255));
-        typeValue1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "EMPLOYEE", "CUSTOMER" }));
-        typeValue1.setBorder(null);
-        typeValue1.setOpaque(true);
-        typeValue1.setPreferredSize(new java.awt.Dimension(400, 50));
-        typeValue1.addActionListener(new java.awt.event.ActionListener() {
+        vehicleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeValue1ActionPerformed(evt);
+                vehicleButton1ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
-        modifyTab.add(typeValue1, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        modifyTab.add(vehicleButton1, gridBagConstraints);
 
         idEmployeeLabel1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         idEmployeeLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -866,7 +846,7 @@ public class Menu extends javax.swing.JFrame {
         idEmployeeLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         modifyTab.add(idEmployeeLabel1, gridBagConstraints);
 
@@ -876,7 +856,7 @@ public class Menu extends javax.swing.JFrame {
         idEmployeeValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         modifyTab.add(idEmployeeValue1, gridBagConstraints);
 
@@ -887,7 +867,7 @@ public class Menu extends javax.swing.JFrame {
         salaryLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         modifyTab.add(salaryLabel1, gridBagConstraints);
 
@@ -897,7 +877,7 @@ public class Menu extends javax.swing.JFrame {
         salaryValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         modifyTab.add(salaryValue1, gridBagConstraints);
 
@@ -908,7 +888,7 @@ public class Menu extends javax.swing.JFrame {
         idCustomerLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         modifyTab.add(idCustomerLabel1, gridBagConstraints);
 
@@ -918,7 +898,7 @@ public class Menu extends javax.swing.JFrame {
         idCustomerValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         modifyTab.add(idCustomerValue1, gridBagConstraints);
 
@@ -929,7 +909,7 @@ public class Menu extends javax.swing.JFrame {
         dateLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         modifyTab.add(dateLabel1, gridBagConstraints);
 
@@ -939,7 +919,7 @@ public class Menu extends javax.swing.JFrame {
         dateValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         modifyTab.add(dateValue1, gridBagConstraints);
 
@@ -950,7 +930,7 @@ public class Menu extends javax.swing.JFrame {
         vipLabel1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.insets = new java.awt.Insets(10, 200, 5, 0);
         modifyTab.add(vipLabel1, gridBagConstraints);
 
@@ -967,26 +947,52 @@ public class Menu extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.insets = new java.awt.Insets(0, 200, 10, 0);
         modifyTab.add(vipValue1, gridBagConstraints);
 
-        registerButton1.setBackground(new java.awt.Color(0, 0, 0));
-        registerButton1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
-        registerButton1.setForeground(new java.awt.Color(255, 255, 255));
-        registerButton1.setText("REGISTER");
-        registerButton1.setBorder(null);
-        registerButton1.setPreferredSize(new java.awt.Dimension(200, 50));
-        registerButton1.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setBackground(new java.awt.Color(0, 0, 0));
+        updateButton.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("UPDATE");
+        updateButton.setBorder(null);
+        updateButton.setPreferredSize(new java.awt.Dimension(200, 50));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButton1ActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.insets = new java.awt.Insets(0, 50, 10, 0);
-        modifyTab.add(registerButton1, gridBagConstraints);
+        modifyTab.add(updateButton, gridBagConstraints);
+
+        checkValue.setBackground(new java.awt.Color(0, 0, 0));
+        checkValue.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        checkValue.setForeground(new java.awt.Color(255, 255, 255));
+        checkValue.setPreferredSize(new java.awt.Dimension(400, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        modifyTab.add(checkValue, gridBagConstraints);
+
+        checkButton.setBackground(new java.awt.Color(0, 0, 0));
+        checkButton.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        checkButton.setForeground(new java.awt.Color(255, 255, 255));
+        checkButton.setText("CHECK");
+        checkButton.setPreferredSize(new java.awt.Dimension(400, 50));
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        modifyTab.add(checkButton, gridBagConstraints);
 
         tabbedPanel.addTab("MODIFY", modifyTab);
 
@@ -1124,19 +1130,57 @@ public class Menu extends javax.swing.JFrame {
     private void deleteLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(2);
         selectPerson.removeAllItems();
-        selectPerson.addItem("-");
         try {
             String[][] idAndName = moveIdAndNameToView();
-            for (int i = 0; i < idAndName.length; i++) {
-                selectPerson.addItem(idAndName[i][0] + " - " + idAndName[i][1]);
+            for (String[] idAndName1 : idAndName) {
+                selectPerson.addItem(idAndName1[0] + " - " + idAndName1[1]);
             }
         } catch (PersonException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "BBDD IS EMPTY", "WRONG", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_deleteLabelMenuOpcMouseClicked
 
     private void modifyLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifyLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(3);
+        // PARAMETROS PERSONA
+        idLabel1.setVisible(false);
+        idValue1.setVisible(false);
+        nameLabel1.setVisible(false);
+        nameValue1.setVisible(false);
+        genderLabel1.setVisible(false);
+        genderValue1.setVisible(false);
+        ageLabel1.setVisible(false);
+        ageValue1.setVisible(false);
+        addressLabel1.setVisible(false);
+        addressValue1.setVisible(false);
+
+        // PARAMETROS EMPLEADOS Y CLIENTES
+        idEmployeeLabel1.setVisible(false);
+        idEmployeeValue1.setVisible(false);
+        salaryLabel1.setVisible(false);
+        salaryValue1.setVisible(false);
+        idCustomerLabel1.setVisible(false);
+        idCustomerValue1.setVisible(false);
+        dateLabel1.setVisible(false);
+        dateValue1.setVisible(false);
+        vipLabel1.setVisible(false);
+        vipValue1.setVisible(false);
+
+        // OTROS
+        vehicleLabel1.setVisible(false);
+        vehicleButton1.setVisible(false);
+
+        updateButton.setVisible(false);
+
+        checkValue.removeAllItems();
+        try {
+            String[][] idAndName = moveIdAndNameToView();
+            for (String[] idAndName1 : idAndName) {
+                checkValue.addItem(idAndName1[0] + " - " + idAndName1[1]);
+            }
+        } catch (PersonException ex) {
+            JOptionPane.showMessageDialog(this, "BBDD IS EMPTY", "WRONG", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_modifyLabelMenuOpcMouseClicked
 
     private void searchLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMenuOpcMouseClicked
@@ -1414,17 +1458,65 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_vipValueActionPerformed
 
-    private void typeValue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeValue1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeValue1ActionPerformed
-
     private void vipValue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vipValue1ActionPerformed
-        // TODO add your handling code here:
+        Color green = new java.awt.Color(0, 255, 0);
+        Color red = new java.awt.Color(255, 0, 0);
+        if (vipValue1.getBackground().equals(red)) {
+            vipValue1.setBackground(green);
+        } else if (vipValue1.getBackground().equals(green)) {
+            vipValue1.setBackground(red);
+        }
     }//GEN-LAST:event_vipValue1ActionPerformed
 
-    private void registerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerButton1ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        int idResult = (int) idValue1.getValue();
+        String nameResult = nameValue1.getText();
+        String genderTaked = genderValue1.getSelectedItem().toString();
+        char genderResult = genderTaked.charAt(0);
+        int ageResult = (int) ageValue1.getValue();
+        String addressResult = addressValue1.getText();
+
+        if (allParametersPersonValids(idResult, nameResult, genderResult, ageResult, addressResult)) {
+            String employeeOrCustomer = "EMPLOYEE";
+            if (!idEmployeeLabel1.isVisible()) {
+                employeeOrCustomer = "CUSTOMER";
+            }
+            switch (employeeOrCustomer) {
+                case "EMPLOYEE" -> {
+                    int idEmployeeResult = (int) idEmployeeValue1.getValue();
+                    int salaryResult = (int) salaryValue1.getValue();
+                    if (allParametersEmployeeValids(idEmployeeResult, salaryResult)) {
+                        Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
+                        try {
+                            addPerson(e);
+                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            tabbedPanel.setSelectedIndex(0);
+                        } catch (PersonException ex) {
+                            JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
+
+                        }
+                    }
+                }
+                case "CUSTOMER" -> {
+                    int idCustomerResult = (int) idCustomerValue1.getValue();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    LocalDate dateResult = LocalDate.parse(dateValue1.getText(), formatter);
+                    boolean vipResult = vipValue1.isSelected();
+
+                    if (allParametersCustomerValids(idCustomerResult, dateResult, vipResult)) {
+                        Customer c = new Customer(idCustomerResult, dateResult, vipResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
+                        try {
+                            addPerson(c);
+                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            tabbedPanel.setSelectedIndex(0);
+                        } catch (PersonException cx) {
+                            JOptionPane.showMessageDialog(this, cx.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     private void vehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleButtonActionPerformed
         createVehicle cv = new createVehicle(this, true);
@@ -1442,17 +1534,104 @@ public class Menu extends javax.swing.JFrame {
 
     private void selectPersonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectPersonItemStateChanged
         personParameters.setVisible(true);
-        if (!selectPerson.getSelectedItem().toString().equals("-")) {
-            String selectedItem = selectPerson.getSelectedItem().toString();
-            int selectedId = Character.getNumericValue(selectedItem.charAt(0));
-            idToDelete = selectedId;
-            try {
-                personParameters.setText(getPersonById(selectedId).toString());
-            } catch (PersonException ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+
+        String selectedItem = selectPerson.getSelectedItem().toString();
+        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        idToDelete = selectedId;
+        try {
+            personParameters.setText(getPersonById(selectedId).toString());
+        } catch (PersonException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_selectPersonItemStateChanged
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        String selectedItem = checkValue.getSelectedItem().toString();
+        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        Person p = null;
+
+        try {
+            p = getPersonById(selectedId);
+        } catch (PersonException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // PARAMETROS PERSONA
+        idLabel1.setVisible(false);
+        idValue1.setVisible(false);
+        nameLabel1.setVisible(true);
+        nameValue1.setVisible(true);
+        nameValue1.setText(p.getName());
+
+        genderLabel1.setVisible(true);
+        genderValue1.setVisible(true);
+        genderValue1.setSelectedIndex(p.getGender() == 'M' ? 1 : 0);
+
+        ageLabel1.setVisible(true);
+        ageValue1.setVisible(true);
+        ageValue1.setValue(p.getAge());
+
+        addressLabel1.setVisible(true);
+        addressValue1.setVisible(true);
+        addressValue1.setText(p.getAddress());
+
+        // PARAMETROS EMPLEADOS Y CLIENTES
+        if (p instanceof Employee) {
+            idCustomerLabel1.setVisible(false);
+            idCustomerValue1.setVisible(false);
+            dateLabel1.setVisible(false);
+            dateValue1.setVisible(false);
+            vipLabel1.setVisible(false);
+            vipValue1.setVisible(false);
+
+            Employee e = (Employee) p;
+            idEmployeeLabel1.setVisible(true);
+            idEmployeeValue1.setVisible(true);
+            idEmployeeValue1.setValue(e.getIDEMPLOYEE());
+
+            salaryLabel1.setVisible(true);
+            salaryValue1.setVisible(true);
+            salaryValue1.setValue(e.getSalary());
+        }
+        if (p instanceof Customer) {
+            idEmployeeLabel1.setVisible(false);
+            idEmployeeValue1.setVisible(false);
+            salaryLabel1.setVisible(false);
+            salaryValue1.setVisible(false);
+
+            Customer c = (Customer) p;
+            idCustomerLabel1.setVisible(true);
+            idCustomerValue1.setVisible(true);
+            idCustomerValue1.setValue(c.getIDCUSTOMER());
+
+            dateLabel1.setVisible(true);
+            dateValue1.setVisible(true);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            dateValue1.setText(c.getDateRegister().format(formatter));
+
+            vipLabel1.setVisible(true);
+            vipValue1.setVisible(true);
+            vipValue1.setSelected(c.isVip());
+            if (c.isVip()) {
+                vipValue1.setBackground(new java.awt.Color(0, 255, 0));
+            } else {
+                vipValue1.setBackground(new java.awt.Color(255, 0, 0));
             }
         }
-    }//GEN-LAST:event_selectPersonItemStateChanged
+
+        // OTROS
+        vehicleLabel1.setVisible(true);
+        vehicleButton1.setVisible(true);
+
+        updateButton.setVisible(true);
+    }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void vehicleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleButton1ActionPerformed
+        createVehicle cv = new createVehicle(this, true);
+        cv.setLocationRelativeTo(null);
+        cv.setVisible(true);
+    }//GEN-LAST:event_vehicleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1498,6 +1677,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel ageLabel1;
     private javax.swing.JSpinner ageValue;
     private javax.swing.JSpinner ageValue1;
+    private javax.swing.JButton checkButton;
+    private javax.swing.JComboBox<String> checkValue;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel dateLabel1;
     private javax.swing.JTextField dateValue;
@@ -1538,7 +1719,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextArea personParameters1;
     private javax.swing.JTextArea personParameters2;
     private javax.swing.JButton registerButton;
-    private javax.swing.JButton registerButton1;
     private javax.swing.JLabel registerLabelMenuOpc;
     private javax.swing.JPanel registerTab;
     private javax.swing.JLabel salaryLabel;
@@ -1561,9 +1741,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel spliter4;
     private javax.swing.JTabbedPane tabbedPanel;
     private javax.swing.JLabel typeLabel;
-    private javax.swing.JLabel typeLabel1;
     private javax.swing.JComboBox<String> typeValue;
-    private javax.swing.JComboBox<String> typeValue1;
+    private javax.swing.JButton updateButton;
     private javax.swing.JButton vehicleButton;
     private javax.swing.JButton vehicleButton1;
     private javax.swing.JLabel vehicleLabel;
