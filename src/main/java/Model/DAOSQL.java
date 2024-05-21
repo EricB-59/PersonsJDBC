@@ -288,7 +288,6 @@ public class DAOSQL {
                     } catch (SQLException ex) {
                         throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
                     }
-
                 }
                 if (p instanceof Customer) {
                     try (Connection conn2 = connect()) {
@@ -305,7 +304,6 @@ public class DAOSQL {
         } catch (SQLException ex) {
             throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
         }
-        // Devolvemos la cantidad de registros afectados, en nuestro caso siempre uno
         return registers;
     }
 
