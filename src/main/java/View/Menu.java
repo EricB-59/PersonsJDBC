@@ -632,7 +632,7 @@ public class Menu extends javax.swing.JFrame {
         deleteTab.setBackground(new java.awt.Color(204, 204, 204));
         deleteTab.setLayout(new java.awt.GridBagLayout());
 
-        selectPerson.setBackground(new java.awt.Color(0, 0, 0));
+        selectPerson.setBackground(new java.awt.Color(255, 255, 255));
         selectPerson.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
         selectPerson.setForeground(new java.awt.Color(255, 255, 255));
         selectPerson.setPreferredSize(new java.awt.Dimension(300, 60));
