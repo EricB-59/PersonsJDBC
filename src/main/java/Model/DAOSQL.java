@@ -363,11 +363,9 @@ public class DAOSQL {
             conn = connect();
             instruction = conn.createStatement();
             rs = instruction.executeQuery("SELECT * FROM " + JDBC_DDBB_TABLE2 + " WHERE id = " + idToSearch + ";");
-
             while (rs.next()) {
                 vehicle = new Vehicle(rs.getString("licensePlate"), rs.getString("color"));
             }
-
         } catch (SQLException ex) {
             throw new PersonException("Can not read from database - readAll");
         } finally {
