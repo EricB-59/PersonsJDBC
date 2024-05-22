@@ -6,6 +6,7 @@ import Model.DAOSQL;
 import Model.Employee;
 import Model.Person;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class controllerPersons {
 
@@ -52,5 +53,13 @@ public class controllerPersons {
 
     public static void deletePerson(int idToDelete) throws PersonException {
         new DAOSQL().delete(new DAOSQL().searchPersonById(idToDelete));
+    }
+    
+    public static ArrayList<Person> getListOfPersonsByName(String name) throws PersonException{
+        return new DAOSQL().searchPersonByName(name);
+    }
+    
+    public static void updatePerson(Person p) throws PersonException {
+        new DAOSQL().update(p);
     }
 }

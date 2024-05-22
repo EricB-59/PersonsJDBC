@@ -472,6 +472,142 @@ public class DAOSQL {
         return registers;
     }
 
+    public ArrayList<Person> searchPersonByName(String name) throws PersonException {
+        Connection conn = null;
+        PreparedStatement instruction = null;
+        ResultSet rs = null;
+        Person p = null;
+        ArrayList<Person> persons = new ArrayList<>();
+
+        try {
+            conn = connect();
+            String query = "SELECT * FROM " + JDBC_DDBB_TABLE + " WHERE name = ?";
+            instruction = conn.prepareStatement(query);
+            instruction.setString(1, name);
+            rs = instruction.executeQuery();
+
+            while (rs.next()) {  // Mueve el cursor al primer registro
+                // Verifica si es un empleado
+                int idCustomer = rs.getInt("idcustomer");
+                if (rs.wasNull()) {  // Comprueba si idcustomer es NULL
+                    // Es un empleado
+                    p = new Employee(
+                            rs.getInt("idemployee"),
+                            rs.getInt("salary"),
+                            rs.getInt("idPerson"),
+                            rs.getString("name"),
+                            rs.getString("gender").charAt(0),
+                            rs.getInt("age"),
+                            rs.getString("address"),
+                            searchVehicleById(rs.getInt("vehicleId"))
+                    );
+                } else {
+                    // Es un cliente
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    p = new Customer(
+                            rs.getInt("idcustomer"),
+                            LocalDate.parse(rs.getString("date"), formatter),
+                            rs.getInt("vip") != 0,
+                            rs.getInt("idPerson"),
+                            rs.getString("name"),
+                            rs.getString("gender").charAt(0),
+                            rs.getInt("age"),
+                            rs.getString("address"),
+                            searchVehicleById(rs.getInt("vehicleId"))
+                    );
+                }
+                persons.add(p);
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not read from database - searchPersonById");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instruction != null) {
+                    instruction.close();
+                }
+                disconnect(conn);
+            } catch (SQLException ex) {
+                throw new PersonException("Can not read from database - searchPersonById");
+            }
+        }
+        return persons;
+    }
+
+    public int update(Person p) throws PersonException {
+        String SQL_UPDATE_EMPLOYEE = "UPDATE " + JDBC_DDBB_TABLE + " SET ";
+        String SQL_UPDATE_CUSTOMER = "UPDATE " + JDBC_DDBB_TABLE + " SET ";
+        String SQL_INSERT_VEHICLE = "INSERT INTO " + JDBC_DDBB_TABLE2 + " (licensePlate, color) VALUES ";
+
+        int registers = 0;
+
+        try (Connection conn = connect()) {
+            if (p.getV() != null) {
+                try (PreparedStatement instruction = conn.prepareStatement(SQL_INSERT_VEHICLE + "('" + p.getV().getLicensePlate() + "','" + p.getV().getColor() + "');")) {
+                    registers += instruction.executeUpdate();
+                    instruction.close();
+                    disconnect(conn);
+                }
+                if (p instanceof Employee) {
+                    try (Connection conn2 = connect()) {
+                        Employee e = (Employee) p;
+                        System.out.println((SQL_UPDATE_EMPLOYEE
+                                + "name = '" + p.getName() + "', "
+                                + "gender = '" + p.getGender() + "', "
+                                + "age = " + p.getAge() + ", "
+                                + "address = '" + p.getAddress() + "', "
+                                + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
+                                + "idemployee = " + e.getIDEMPLOYEE() + ", "
+                                + "salary = " + ((int) e.getSalary()) + " "
+                                + "WHERE idPerson = " + p.getID() + ";"));
+                        try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_EMPLOYEE
+                                + "name = '" + p.getName() + "', "
+                                + "gender = '" + p.getGender() + "', "
+                                + "age = " + p.getAge() + ", "
+                                + "address = '" + p.getAddress() + "', "
+                                + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
+                                + "idemployee = " + e.getIDEMPLOYEE() + ", "
+                                + "salary = " + ((int) e.getSalary()) + " "
+                                + "WHERE idPerson = " + p.getID() + ";")) {
+                            registers += instruction.executeUpdate();
+                        }
+                    } catch (SQLException ex) {
+                        throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+                }
+                if (p instanceof Customer) {
+                    try (Connection conn2 = connect()) {
+                        Customer c = (Customer) p;
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_CUSTOMER
+                                + "name = '" + p.getName() + "', "
+                                + "gender = '" + p.getGender() + "', "
+                                + "age = " + p.getAge() + ", "
+                                + "address = '" + p.getAddress() + "', "
+                                + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
+                                + "idcustomer = " + c.getIDCUSTOMER() + ", "
+                                + "vip = " + (c.isVip() ? 1 : 0) + ", " 
+                                + "date = '" + c.getDateRegister().format(formatter) + "' "
+                                + "WHERE idPerson = " + p.getID() + ";")) {
+                            registers += instruction.executeUpdate();
+                        }
+                    } catch (SQLException ex) {
+                        throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+        }
+
+        return registers;
+    }
+
+// Asumimos que hay métodos connect() y disconnect() definidos en la clase, así como un método searchIdByLicensePlate()
+// Asumimos que hay métodos connect() y disconnect() definidos en la clase, así como un método searchIdByLicensePlate()
+// Asumimos que hay métodos connect() y disconnect() definidos en la clase, así como un método searchIdByLicensePlate()
 //    @Override
 //    public List<Student> readALL() throws DAO_Excep {
 //        List<Student> students = new ArrayList<>();

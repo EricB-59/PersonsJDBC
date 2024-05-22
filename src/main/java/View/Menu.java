@@ -6,10 +6,12 @@ package View;
 
 import static Controller.controllerPersons.addPerson;
 import static Controller.controllerPersons.deletePerson;
+import static Controller.controllerPersons.getListOfPersonsByName;
 import static Controller.controllerPersons.getPersonById;
 import static Controller.controllerPersons.moveIdAndNameToView;
 import static Controller.controllerPersons.numberOfPersons;
 import static Controller.controllerPersons.startDB;
+import static Controller.controllerPersons.updatePerson;
 import Controller.exceptions.PersonException;
 import Model.Customer;
 import Model.Employee;
@@ -20,6 +22,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -107,6 +110,7 @@ public class Menu extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         scrollPanel = new javax.swing.JScrollPane();
         personParameters = new javax.swing.JTextArea();
+        checkButton1 = new javax.swing.JButton();
         modifyTab = new javax.swing.JPanel();
         idLabel1 = new javax.swing.JLabel();
         idValue1 = new javax.swing.JSpinner();
@@ -135,15 +139,16 @@ public class Menu extends javax.swing.JFrame {
         checkButton = new javax.swing.JButton();
         searchTab = new javax.swing.JPanel();
         labelPerson1 = new javax.swing.JLabel();
-        scrollPanel1 = new javax.swing.JScrollPane();
-        personParameters1 = new javax.swing.JTextArea();
         sendSearchButton = new javax.swing.JButton();
         nameValue2 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         showTab = new javax.swing.JPanel();
-        selectPerson2 = new javax.swing.JComboBox<>();
-        labelPerson2 = new javax.swing.JLabel();
-        scrollPanel2 = new javax.swing.JScrollPane();
-        personParameters2 = new javax.swing.JTextArea();
+        selectPerson1 = new javax.swing.JComboBox<>();
+        scrollPanel3 = new javax.swing.JScrollPane();
+        personParameters3 = new javax.swing.JTextArea();
+        checkButton2 = new javax.swing.JButton();
+        labelPerson3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -638,11 +643,6 @@ public class Menu extends javax.swing.JFrame {
         selectPerson.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
         selectPerson.setForeground(new java.awt.Color(255, 255, 255));
         selectPerson.setPreferredSize(new java.awt.Dimension(300, 60));
-        selectPerson.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                selectPersonItemStateChanged(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -675,11 +675,12 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         deleteTab.add(deleteButton, gridBagConstraints);
 
         scrollPanel.setPreferredSize(new java.awt.Dimension(700, 400));
 
+        personParameters.setEditable(false);
         personParameters.setBackground(new java.awt.Color(255, 255, 255));
         personParameters.setColumns(20);
         personParameters.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
@@ -689,9 +690,25 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
         deleteTab.add(scrollPanel, gridBagConstraints);
+
+        checkButton1.setBackground(new java.awt.Color(0, 0, 0));
+        checkButton1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        checkButton1.setForeground(new java.awt.Color(255, 255, 255));
+        checkButton1.setText("CHECK");
+        checkButton1.setPreferredSize(new java.awt.Dimension(400, 50));
+        checkButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        deleteTab.add(checkButton1, gridBagConstraints);
 
         tabbedPanel.addTab("DELETE", deleteTab);
 
@@ -1012,26 +1029,16 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
         searchTab.add(labelPerson1, gridBagConstraints);
 
-        scrollPanel1.setPreferredSize(new java.awt.Dimension(700, 400));
-
-        personParameters1.setBackground(new java.awt.Color(255, 255, 255));
-        personParameters1.setColumns(20);
-        personParameters1.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
-        personParameters1.setRows(5);
-        scrollPanel1.setViewportView(personParameters1);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
-        searchTab.add(scrollPanel1, gridBagConstraints);
-
         sendSearchButton.setBackground(new java.awt.Color(0, 0, 0));
         sendSearchButton.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
         sendSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         sendSearchButton.setText("SEND");
         sendSearchButton.setPreferredSize(new java.awt.Dimension(300, 60));
+        sendSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendSearchButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -1048,48 +1055,82 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 50);
         searchTab.add(nameValue2, gridBagConstraints);
 
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 300));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setPreferredSize(new java.awt.Dimension(600, 300));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        searchTab.add(jScrollPane1, gridBagConstraints);
+
         tabbedPanel.addTab("SEARCH", searchTab);
 
         showTab.setBackground(new java.awt.Color(204, 204, 204));
         showTab.setLayout(new java.awt.GridBagLayout());
 
-        selectPerson2.setBackground(new java.awt.Color(0, 0, 0));
-        selectPerson2.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
-        selectPerson2.setForeground(new java.awt.Color(255, 255, 255));
-        selectPerson2.setPreferredSize(new java.awt.Dimension(300, 60));
+        selectPerson1.setBackground(new java.awt.Color(255, 255, 255));
+        selectPerson1.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        selectPerson1.setForeground(new java.awt.Color(255, 255, 255));
+        selectPerson1.setPreferredSize(new java.awt.Dimension(300, 60));
+        selectPerson1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectPerson1ItemStateChanged(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
-        showTab.add(selectPerson2, gridBagConstraints);
+        showTab.add(selectPerson1, gridBagConstraints);
 
-        labelPerson2.setBackground(new java.awt.Color(255, 255, 255));
-        labelPerson2.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
-        labelPerson2.setForeground(new java.awt.Color(0, 0, 0));
-        labelPerson2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPerson2.setText("PERSON");
-        labelPerson2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        labelPerson2.setPreferredSize(new java.awt.Dimension(300, 60));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
-        showTab.add(labelPerson2, gridBagConstraints);
+        scrollPanel3.setPreferredSize(new java.awt.Dimension(700, 400));
 
-        scrollPanel2.setPreferredSize(new java.awt.Dimension(700, 400));
-
-        personParameters2.setBackground(new java.awt.Color(255, 255, 255));
-        personParameters2.setColumns(20);
-        personParameters2.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
-        personParameters2.setRows(5);
-        scrollPanel2.setViewportView(personParameters2);
+        personParameters3.setEditable(false);
+        personParameters3.setBackground(new java.awt.Color(255, 255, 255));
+        personParameters3.setColumns(20);
+        personParameters3.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        personParameters3.setRows(5);
+        scrollPanel3.setViewportView(personParameters3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
-        showTab.add(scrollPanel2, gridBagConstraints);
+        showTab.add(scrollPanel3, gridBagConstraints);
+
+        checkButton2.setBackground(new java.awt.Color(0, 0, 0));
+        checkButton2.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
+        checkButton2.setForeground(new java.awt.Color(255, 255, 255));
+        checkButton2.setText("CHECK");
+        checkButton2.setPreferredSize(new java.awt.Dimension(400, 50));
+        checkButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButton2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        showTab.add(checkButton2, gridBagConstraints);
+
+        labelPerson3.setBackground(new java.awt.Color(255, 255, 255));
+        labelPerson3.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
+        labelPerson3.setForeground(new java.awt.Color(0, 0, 0));
+        labelPerson3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPerson3.setText("PERSON");
+        labelPerson3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelPerson3.setPreferredSize(new java.awt.Dimension(300, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        showTab.add(labelPerson3, gridBagConstraints);
 
         tabbedPanel.addTab("SHOW", showTab);
 
@@ -1189,6 +1230,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void showLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(5);
+        selectPerson1.removeAllItems();
+        try {
+            String[][] idAndName = moveIdAndNameToView();
+            for (String[] idAndName1 : idAndName) {
+                selectPerson1.addItem(idAndName1[0] + " - " + idAndName1[1]);
+            }
+        } catch (PersonException ex) {
+            JOptionPane.showMessageDialog(this, "BBDD IS EMPTY", "WRONG", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_showLabelMenuOpcMouseClicked
 
     private void registerLabelMenuOpcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMenuOpcMouseEntered
@@ -1488,7 +1538,7 @@ public class Menu extends javax.swing.JFrame {
                     if (allParametersEmployeeValids(idEmployeeResult, salaryResult)) {
                         Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                         try {
-                            addPerson(e);
+                            updatePerson(e);
                             JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
                             tabbedPanel.setSelectedIndex(0);
                         } catch (PersonException ex) {
@@ -1506,8 +1556,8 @@ public class Menu extends javax.swing.JFrame {
                     if (allParametersCustomerValids(idCustomerResult, dateResult, vipResult)) {
                         Customer c = new Customer(idCustomerResult, dateResult, vipResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                         try {
-                            addPerson(c);
-                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            updatePerson(c);
+                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATE EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
                             tabbedPanel.setSelectedIndex(0);
                         } catch (PersonException cx) {
                             JOptionPane.showMessageDialog(this, cx.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
@@ -1532,20 +1582,6 @@ public class Menu extends javax.swing.JFrame {
         cd.setVisible(true);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void selectPersonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectPersonItemStateChanged
-        personParameters.setVisible(true);
-
-        String selectedItem = selectPerson.getSelectedItem().toString();
-        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
-        idToDelete = selectedId;
-        try {
-            personParameters.setText(getPersonById(selectedId).toString());
-        } catch (PersonException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_selectPersonItemStateChanged
-
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
         String selectedItem = checkValue.getSelectedItem().toString();
         int selectedId = Character.getNumericValue(selectedItem.charAt(0));
@@ -1560,6 +1596,8 @@ public class Menu extends javax.swing.JFrame {
         // PARAMETROS PERSONA
         idLabel1.setVisible(false);
         idValue1.setVisible(false);
+        idValue1.setValue(p.getID());
+        
         nameLabel1.setVisible(true);
         nameValue1.setVisible(true);
         nameValue1.setText(p.getName());
@@ -1633,6 +1671,63 @@ public class Menu extends javax.swing.JFrame {
         cv.setVisible(true);
     }//GEN-LAST:event_vehicleButton1ActionPerformed
 
+    private void checkButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButton1ActionPerformed
+        personParameters.setVisible(true);
+
+        String selectedItem = selectPerson.getSelectedItem().toString();
+        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        idToDelete = selectedId;
+        try {
+            personParameters.setText(getPersonById(selectedId).toString());
+        } catch (PersonException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_checkButton1ActionPerformed
+
+    private void selectPerson1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectPerson1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectPerson1ItemStateChanged
+
+    private void checkButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButton2ActionPerformed
+        personParameters3.setVisible(true);
+
+        String selectedItem = selectPerson1.getSelectedItem().toString();
+        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        idToDelete = selectedId;
+        try {
+            personParameters3.setText(getPersonById(selectedId).toString());
+        } catch (PersonException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_checkButton2ActionPerformed
+
+    private void sendSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendSearchButtonActionPerformed
+        ArrayList<Person> persons = null;
+        try {
+            persons = getListOfPersonsByName(nameValue2.getText());
+        } catch (PersonException ex) {
+            JOptionPane.showMessageDialog(this, "THIS NAME DOESN'T EXIST", "WRONG", JOptionPane.ERROR_MESSAGE);
+        }
+        jTextArea1.setText("");
+        if (persons == null) {
+            JOptionPane.showMessageDialog(this, "THIS NAME DOESN'T EXIST", "WRONG", JOptionPane.ERROR_MESSAGE);
+        } else {
+            for (Person p : persons) {
+                switch (p.getClass().getSimpleName()) {
+                    case "Employee" -> {
+                        Employee e = (Employee) p;
+                        jTextArea1.append(e.toString());
+                    }
+                    case "Customer" -> {
+                        Customer c = (Customer) p;
+                        jTextArea1.append(c.toString());
+                    }
+                }
+                jTextArea1.append("\n");
+            }
+        }
+    }//GEN-LAST:event_sendSearchButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1678,6 +1773,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSpinner ageValue;
     private javax.swing.JSpinner ageValue1;
     private javax.swing.JButton checkButton;
+    private javax.swing.JButton checkButton1;
+    private javax.swing.JButton checkButton2;
     private javax.swing.JComboBox<String> checkValue;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel dateLabel1;
@@ -1702,10 +1799,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel idLabel1;
     private javax.swing.JSpinner idValue;
     private javax.swing.JSpinner idValue1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelNumberOfPersons;
     private javax.swing.JLabel labelPerson;
     private javax.swing.JLabel labelPerson1;
-    private javax.swing.JLabel labelPerson2;
+    private javax.swing.JLabel labelPerson3;
     private javax.swing.JPanel menuOpc;
     private javax.swing.JLabel modifyLabelMenuOpc;
     private javax.swing.JPanel modifyTab;
@@ -1716,8 +1815,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField nameValue2;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextArea personParameters;
-    private javax.swing.JTextArea personParameters1;
-    private javax.swing.JTextArea personParameters2;
+    private javax.swing.JTextArea personParameters3;
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel registerLabelMenuOpc;
     private javax.swing.JPanel registerTab;
@@ -1726,12 +1824,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSpinner salaryValue;
     private javax.swing.JSpinner salaryValue1;
     private javax.swing.JScrollPane scrollPanel;
-    private javax.swing.JScrollPane scrollPanel1;
-    private javax.swing.JScrollPane scrollPanel2;
+    private javax.swing.JScrollPane scrollPanel3;
     private javax.swing.JLabel searchLabelMenuOpc;
     private javax.swing.JPanel searchTab;
     private javax.swing.JComboBox<String> selectPerson;
-    private javax.swing.JComboBox<String> selectPerson2;
+    private javax.swing.JComboBox<String> selectPerson1;
     private javax.swing.JButton sendSearchButton;
     private javax.swing.JLabel showLabelMenuOpc;
     private javax.swing.JPanel showTab;
