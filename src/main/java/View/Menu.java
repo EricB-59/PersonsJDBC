@@ -1519,11 +1519,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_vipValue1ActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        int idResult = (int) idValue1.getValue();
+        int idResult = ((Number) idValue1.getValue()).intValue();
         String nameResult = nameValue1.getText();
         String genderTaked = genderValue1.getSelectedItem().toString();
         char genderResult = genderTaked.charAt(0);
-        int ageResult = (int) ageValue1.getValue();
+        int ageResult = ((Number) ageValue1.getValue()).intValue();
         String addressResult = addressValue1.getText();
 
         if (allParametersPersonValids(idResult, nameResult, genderResult, ageResult, addressResult)) {
@@ -1533,8 +1533,8 @@ public class Menu extends javax.swing.JFrame {
             }
             switch (employeeOrCustomer) {
                 case "EMPLOYEE" -> {
-                    int idEmployeeResult = (int) idEmployeeValue1.getValue();
-                    int salaryResult = (int) salaryValue1.getValue();
+                    int idEmployeeResult = ((Number) idEmployeeValue1.getValue()).intValue();
+                    int salaryResult = ((Number) salaryValue1.getValue()).intValue();
                     if (allParametersEmployeeValids(idEmployeeResult, salaryResult)) {
                         Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                         try {
@@ -1547,7 +1547,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                 }
                 case "CUSTOMER" -> {
-                    int idCustomerResult = (int) idCustomerValue1.getValue();
+                    int idCustomerResult = ((Number) idCustomerValue1.getValue()).intValue();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                     LocalDate dateResult = LocalDate.parse(dateValue1.getText(), formatter);
                     boolean vipResult = vipValue1.isSelected();

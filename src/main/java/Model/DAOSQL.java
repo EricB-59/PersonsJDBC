@@ -623,15 +623,6 @@ public class DAOSQL {
                     if (p instanceof Employee) {
                         try (Connection conn2 = connect()) {
                             Employee e = (Employee) p;
-                            System.out.println((SQL_UPDATE_EMPLOYEE
-                                    + "name = '" + p.getName() + "', "
-                                    + "gender = '" + p.getGender() + "', "
-                                    + "age = " + p.getAge() + ", "
-                                    + "address = '" + p.getAddress() + "', "
-                                    + "vehicleId = " + null + ", "
-                                    + "idemployee = " + e.getIDEMPLOYEE() + ", "
-                                    + "salary = " + ((int) e.getSalary()) + " "
-                                    + "WHERE idPerson = " + p.getID() + ";"));
                             try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_EMPLOYEE
                                     + "name = '" + p.getName() + "', "
                                     + "gender = '" + p.getGender() + "', "
@@ -651,12 +642,22 @@ public class DAOSQL {
                         try (Connection conn2 = connect()) {
                             Customer c = (Customer) p;
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                            System.out.println(SQL_UPDATE_CUSTOMER
+                                    + "name = '" + p.getName() + "', "
+                                    + "gender = '" + p.getGender() + "', "
+                                    + "age = " + p.getAge() + ", "
+                                    + "address = '" + p.getAddress() + "', "
+                                    + "vehicleId = " + null + ", "
+                                    + "idcustomer = " + c.getIDCUSTOMER() + ", "
+                                    + "vip = " + (c.isVip() ? 1 : 0) + ", "
+                                    + "date = '" + c.getDateRegister().format(formatter) + "' "
+                                    + "WHERE idPerson = " + p.getID() + ";");
                             try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_CUSTOMER
                                     + "name = '" + p.getName() + "', "
                                     + "gender = '" + p.getGender() + "', "
                                     + "age = " + p.getAge() + ", "
                                     + "address = '" + p.getAddress() + "', "
-                                    + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
+                                    + "vehicleId = " + null + ", "
                                     + "idcustomer = " + c.getIDCUSTOMER() + ", "
                                     + "vip = " + (c.isVip() ? 1 : 0) + ", "
                                     + "date = '" + c.getDateRegister().format(formatter) + "' "
