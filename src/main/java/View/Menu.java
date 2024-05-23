@@ -1539,11 +1539,10 @@ public class Menu extends javax.swing.JFrame {
                         Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                         try {
                             updatePerson(e);
-                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
                             tabbedPanel.setSelectedIndex(0);
                         } catch (PersonException ex) {
                             JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
-
                         }
                     }
                 }
@@ -1584,7 +1583,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
         String selectedItem = checkValue.getSelectedItem().toString();
-        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        String[] parts = selectedItem.split(" ");
+        int selectedId = Integer.parseInt(parts[0]);
+
         Person p = null;
 
         try {
@@ -1597,7 +1598,7 @@ public class Menu extends javax.swing.JFrame {
         idLabel1.setVisible(false);
         idValue1.setVisible(false);
         idValue1.setValue(p.getID());
-        
+
         nameLabel1.setVisible(true);
         nameValue1.setVisible(true);
         nameValue1.setText(p.getName());
@@ -1675,7 +1676,8 @@ public class Menu extends javax.swing.JFrame {
         personParameters.setVisible(true);
 
         String selectedItem = selectPerson.getSelectedItem().toString();
-        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        String[] parts = selectedItem.split(" ");
+        int selectedId = Integer.parseInt(parts[0]);
         idToDelete = selectedId;
         try {
             personParameters.setText(getPersonById(selectedId).toString());
@@ -1692,7 +1694,8 @@ public class Menu extends javax.swing.JFrame {
         personParameters3.setVisible(true);
 
         String selectedItem = selectPerson1.getSelectedItem().toString();
-        int selectedId = Character.getNumericValue(selectedItem.charAt(0));
+        String[] parts = selectedItem.split(" ");
+        int selectedId = Integer.parseInt(parts[0]);
         idToDelete = selectedId;
         try {
             personParameters3.setText(getPersonById(selectedId).toString());
