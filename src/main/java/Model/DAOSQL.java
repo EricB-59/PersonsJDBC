@@ -271,7 +271,7 @@ public class DAOSQL {
         String SQL_INSERT_EMPLOYEE = "INSERT INTO " + JDBC_DDBB_TABLE + " (idPerson, name, gender, age, address, vehicleId, idemployee, salary) VALUES ";
         String SQL_INSERT_CUSTOMER = "INSERT INTO " + JDBC_DDBB_TABLE + " (idPerson, name, gender, age, address, vehicleId, idcustomer, date, vip) VALUES ";
         String SQL_INSERT_VEHICLE = "INSERT INTO " + JDBC_DDBB_TABLE2 + " (licensePlate, color) VALUES ";
-
+        
         int registers = 0;
 
         try (Connection conn = connect()) {
