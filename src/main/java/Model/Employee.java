@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Employee extends Person{
     final private int IDEMPLOYEE;
-    private double salary;
+    private int salary;
 
-    public Employee(int IDEMPLOYEE, double salary, int ID, String name, char gender, int age, String address, Vehicle v) {
+    public Employee(int IDEMPLOYEE, int salary, int ID, String name, char gender, int age, String address, Vehicle v) {
         super(ID, name, gender, age, address, v);
         this.IDEMPLOYEE = IDEMPLOYEE;
         this.salary = salary;
@@ -24,7 +24,7 @@ public class Employee extends Person{
     public double getSalary() {
         return salary;
     }
-    public void setSalary(double salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

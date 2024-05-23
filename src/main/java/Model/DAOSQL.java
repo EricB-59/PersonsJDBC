@@ -276,6 +276,7 @@ public class DAOSQL {
 
         try (Connection conn = connect()) {
             if (p.getV() != null) {
+                System.out.println("getv es null");
                 try (PreparedStatement instruction = conn.prepareStatement(SQL_INSERT_VEHICLE + "('" + p.getV().getLicensePlate() + "','" + p.getV().getColor() + "');")) {
                     registers += instruction.executeUpdate();
                     instruction.close();
@@ -296,6 +297,28 @@ public class DAOSQL {
                         Customer c = (Customer) p;
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                         try (PreparedStatement instruction = conn2.prepareStatement(SQL_INSERT_CUSTOMER + "(" + p.getID() + ",'" + p.getName() + "','" + p.getGender() + "'," + p.getAge() + ",'" + p.getAddress() + "'," + searchIdByLicensePlate(p.getV().getLicensePlate()) + "," + c.getIDCUSTOMER() + ",'" + c.getDateRegister().format(formatter) + "'," + (c.isVip() ? 1 : 0) + ");")) {
+                            registers += instruction.executeUpdate();
+                        }
+                    } catch (SQLException ex) {
+                        throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+                }
+            } else {
+                if (p instanceof Employee) {
+                    try (Connection conn2 = connect()) {
+                        Employee e = (Employee) p;
+                        try (PreparedStatement instruction = conn2.prepareStatement(SQL_INSERT_EMPLOYEE + "(" + p.getID() + ",'" + p.getName() + "','" + p.getGender() + "'," + p.getAge() + ",'" + p.getAddress() + "'," + null + "," + e.getIDEMPLOYEE() + "," + ((int) e.getSalary()) + ");")) {
+                            registers += instruction.executeUpdate();
+                        }
+                    } catch (SQLException ex) {
+                        throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+                }
+                if (p instanceof Customer) {
+                    try (Connection conn2 = connect()) {
+                        Customer c = (Customer) p;
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        try (PreparedStatement instruction = conn2.prepareStatement(SQL_INSERT_CUSTOMER + "(" + p.getID() + ",'" + p.getName() + "','" + p.getGender() + "'," + p.getAge() + ",'" + p.getAddress() + "'," + null + "," + c.getIDCUSTOMER() + ",'" + c.getDateRegister().format(formatter) + "'," + (c.isVip() ? 1 : 0) + ");")) {
                             registers += instruction.executeUpdate();
                         }
                     } catch (SQLException ex) {
@@ -588,13 +611,61 @@ public class DAOSQL {
                                 + "address = '" + p.getAddress() + "', "
                                 + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
                                 + "idcustomer = " + c.getIDCUSTOMER() + ", "
-                                + "vip = " + (c.isVip() ? 1 : 0) + ", " 
+                                + "vip = " + (c.isVip() ? 1 : 0) + ", "
                                 + "date = '" + c.getDateRegister().format(formatter) + "' "
                                 + "WHERE idPerson = " + p.getID() + ";")) {
                             registers += instruction.executeUpdate();
                         }
                     } catch (SQLException ex) {
                         throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                    }
+                } else {
+                    if (p instanceof Employee) {
+                        try (Connection conn2 = connect()) {
+                            Employee e = (Employee) p;
+                            System.out.println((SQL_UPDATE_EMPLOYEE
+                                    + "name = '" + p.getName() + "', "
+                                    + "gender = '" + p.getGender() + "', "
+                                    + "age = " + p.getAge() + ", "
+                                    + "address = '" + p.getAddress() + "', "
+                                    + "vehicleId = " + null + ", "
+                                    + "idemployee = " + e.getIDEMPLOYEE() + ", "
+                                    + "salary = " + ((int) e.getSalary()) + " "
+                                    + "WHERE idPerson = " + p.getID() + ";"));
+                            try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_EMPLOYEE
+                                    + "name = '" + p.getName() + "', "
+                                    + "gender = '" + p.getGender() + "', "
+                                    + "age = " + p.getAge() + ", "
+                                    + "address = '" + p.getAddress() + "', "
+                                    + "vehicleId = " + null + ", "
+                                    + "idemployee = " + e.getIDEMPLOYEE() + ", "
+                                    + "salary = " + ((int) e.getSalary()) + " "
+                                    + "WHERE idPerson = " + p.getID() + ";")) {
+                                registers += instruction.executeUpdate();
+                            }
+                        } catch (SQLException ex) {
+                            throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                        }
+                    }
+                    if (p instanceof Customer) {
+                        try (Connection conn2 = connect()) {
+                            Customer c = (Customer) p;
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                            try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_CUSTOMER
+                                    + "name = '" + p.getName() + "', "
+                                    + "gender = '" + p.getGender() + "', "
+                                    + "age = " + p.getAge() + ", "
+                                    + "address = '" + p.getAddress() + "', "
+                                    + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
+                                    + "idcustomer = " + c.getIDCUSTOMER() + ", "
+                                    + "vip = " + (c.isVip() ? 1 : 0) + ", "
+                                    + "date = '" + c.getDateRegister().format(formatter) + "' "
+                                    + "WHERE idPerson = " + p.getID() + ";")) {
+                                registers += instruction.executeUpdate();
+                            }
+                        } catch (SQLException ex) {
+                            throw new PersonException("Can not write to database (DAO_Controller.DAOSQL.insert)");
+                        }
                     }
                 }
             }
