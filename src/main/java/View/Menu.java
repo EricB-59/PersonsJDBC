@@ -5,7 +5,6 @@
 package View;
 
 import static Controller.controllerPersons.addPerson;
-import static Controller.controllerPersons.deletePerson;
 import static Controller.controllerPersons.getListOfPersonsByName;
 import static Controller.controllerPersons.getPersonById;
 import static Controller.controllerPersons.moveIdAndNameToView;
@@ -870,6 +869,7 @@ public class Menu extends javax.swing.JFrame {
         idEmployeeValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         idEmployeeValue1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         idEmployeeValue1.setBorder(null);
+        idEmployeeValue1.setEnabled(false);
         idEmployeeValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -912,6 +912,7 @@ public class Menu extends javax.swing.JFrame {
         idCustomerValue1.setFont(new java.awt.Font("Anta", 0, 24)); // NOI18N
         idCustomerValue1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         idCustomerValue1.setBorder(null);
+        idCustomerValue1.setEnabled(false);
         idCustomerValue1.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1058,6 +1059,7 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 300));
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Anta", 0, 18)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setPreferredSize(new java.awt.Dimension(600, 300));
         jScrollPane1.setViewportView(jTextArea1);
@@ -1415,7 +1417,17 @@ public class Menu extends javax.swing.JFrame {
                             Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                             try {
                                 addPerson(e);
-                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                if (getVehicle() == null) {
+                                    JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITHOUT CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                                try {
+                                    System.out.println(numberOfPersons());
+                                    labelNumberOfPersons.setText(numberOfPersons());
+                                } catch (PersonException ex) {
+                                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 tabbedPanel.setSelectedIndex(0);
                             } catch (PersonException ex) {
                                 JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
@@ -1433,7 +1445,17 @@ public class Menu extends javax.swing.JFrame {
                             Customer c = new Customer(idCustomerResult, dateResult, vipResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                             try {
                                 addPerson(c);
-                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                if (getVehicle() == null) {
+                                    JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITHOUT CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "SUCCESSFULLY CREATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                                try {
+                                    System.out.println(numberOfPersons());
+                                    labelNumberOfPersons.setText(numberOfPersons());
+                                } catch (PersonException ex) {
+                                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 tabbedPanel.setSelectedIndex(0);
                             } catch (PersonException cx) {
                                 JOptionPane.showMessageDialog(this, cx.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
@@ -1539,7 +1561,17 @@ public class Menu extends javax.swing.JFrame {
                         Employee e = new Employee(idEmployeeResult, salaryResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                         try {
                             updatePerson(e);
-                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            if (getVehicle() == null) {
+                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATED EMPLOYEE WITHOUT CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            try {
+                                System.out.println(numberOfPersons());
+                                labelNumberOfPersons.setText(numberOfPersons());
+                            } catch (PersonException ex) {
+                                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             tabbedPanel.setSelectedIndex(0);
                         } catch (PersonException ex) {
                             JOptionPane.showMessageDialog(this, ex.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
@@ -1556,7 +1588,17 @@ public class Menu extends javax.swing.JFrame {
                         Customer c = new Customer(idCustomerResult, dateResult, vipResult, idResult, nameResult, genderResult, ageResult, addressResult, getVehicle());
                         try {
                             updatePerson(c);
-                            JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATE EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            if (getVehicle() == null) {
+                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATED EMPLOYEE WITHOUT CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "SUCCESSFULLY UPDATED EMPLOYEE WITH CAR", "EMPLOYEE CREATED", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            try {
+                                System.out.println(numberOfPersons());
+                                labelNumberOfPersons.setText(numberOfPersons());
+                            } catch (PersonException ex) {
+                                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             tabbedPanel.setSelectedIndex(0);
                         } catch (PersonException cx) {
                             JOptionPane.showMessageDialog(this, cx.getMessage(), "WRONG", JOptionPane.ERROR_MESSAGE);
