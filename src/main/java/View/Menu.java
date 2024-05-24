@@ -1172,6 +1172,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void deleteLabelMenuOpcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLabelMenuOpcMouseClicked
         tabbedPanel.setSelectedIndex(2);
+        personParameters.setText("");
         selectPerson.removeAllItems();
         try {
             String[][] idAndName = moveIdAndNameToView();
