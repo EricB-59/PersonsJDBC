@@ -547,15 +547,6 @@ public class DAOSQL {
                 if (p instanceof Employee) {
                     try (Connection conn2 = connect()) {
                         Employee e = (Employee) p;
-                        System.out.println((SQL_UPDATE_EMPLOYEE
-                                + "name = '" + p.getName() + "', "
-                                + "gender = '" + p.getGender() + "', "
-                                + "age = " + p.getAge() + ", "
-                                + "address = '" + p.getAddress() + "', "
-                                + "vehicleId = " + searchIdByLicensePlate(p.getV().getLicensePlate()) + ", "
-                                + "idemployee = " + e.getIDEMPLOYEE() + ", "
-                                + "salary = " + ((int) e.getSalary()) + " "
-                                + "WHERE idPerson = " + p.getID() + ";"));
                         try (PreparedStatement instruction = conn2.prepareStatement(SQL_UPDATE_EMPLOYEE
                                 + "name = '" + p.getName() + "', "
                                 + "gender = '" + p.getGender() + "', "

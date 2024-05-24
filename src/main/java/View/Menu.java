@@ -706,7 +706,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 50, 0);
         deleteTab.add(checkButton1, gridBagConstraints);
 
         tabbedPanel.addTab("DELETE", deleteTab);
@@ -1118,7 +1118,7 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 50, 0);
         showTab.add(checkButton2, gridBagConstraints);
 
         labelPerson3.setBackground(new java.awt.Color(255, 255, 255));
