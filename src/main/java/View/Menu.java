@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import static Controller.controllerPersons.addPerson;
@@ -28,13 +24,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author rambo
+ * @author ericb
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
