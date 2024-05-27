@@ -1071,11 +1071,6 @@ public class Menu extends javax.swing.JFrame {
         selectPerson1.setFont(new java.awt.Font("Anta", 0, 36)); // NOI18N
         selectPerson1.setForeground(new java.awt.Color(255, 255, 255));
         selectPerson1.setPreferredSize(new java.awt.Dimension(300, 60));
-        selectPerson1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                selectPerson1ItemStateChanged(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -1721,10 +1716,6 @@ public class Menu extends javax.swing.JFrame {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_checkButton1ActionPerformed
-
-    private void selectPerson1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectPerson1ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectPerson1ItemStateChanged
 
     private void checkButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButton2ActionPerformed
         personParameters3.setVisible(true);
